@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,10 +19,32 @@ public class Turno implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fecha;
     private int hora;
+    @ManyToOne
+    private Usuario usuario;
+    @ManyToOne
+    private Paciente pacienteVisitado;
    
     
     public Turno() {
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Paciente getPacienteVisitado() {
+        return pacienteVisitado;
+    }
+
+    public void setPacienteVisitado(Paciente pacienteVisitado) {
+        this.pacienteVisitado = pacienteVisitado;
+    }
+    
+    
 
     public long getId() {
         return id;
