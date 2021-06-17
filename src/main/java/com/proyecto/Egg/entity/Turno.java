@@ -4,6 +4,8 @@ package com.proyecto.Egg.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -15,6 +17,7 @@ public class Turno implements Serializable {
     
     @Id
     //Falta el generador automatico de Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Temporal(TemporalType.DATE)
     private Date fecha;
