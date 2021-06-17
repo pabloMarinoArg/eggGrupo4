@@ -17,8 +17,8 @@ import org.hibernate.annotations.GenericGenerator;
 public class Seguimiento implements Serializable {
 
 	@Id
-	/*@GeneratedValue(generator="uuid")
-    @GenericGenerator(name="uuid",strategy = "uuid2")*/
+	@GeneratedValue(generator="uuid")
+    @GenericGenerator(name="uuid",strategy = "uuid2")
 	private String id;
 	private String comentario;
 	@Temporal(TemporalType.DATE)
