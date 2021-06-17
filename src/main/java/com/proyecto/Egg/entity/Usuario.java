@@ -7,10 +7,11 @@ package com.proyecto.Egg.entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import org.hibernate.annotations.GenericGenerator;
 
 
-public class UsuarioEntidad {
+public class Usuario {
     
     @Id
     @GeneratedValue(generator = "uuid")
@@ -20,10 +21,11 @@ public class UsuarioEntidad {
     private String password;
     private String rol;
     private String mail;
+    @OneToMany
+    private Roles roles;
     
     
-    
-    public UsuarioEntidad() {
+    public Usuario() {
     }
 
     public long getId() {

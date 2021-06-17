@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
 
-public class RolesEntidad implements Serializable {
+
 
     @Entity
     public class Roles implements Serializable {
@@ -46,4 +46,4 @@ public class RolesEntidad implements Serializable {
 
     }
 
-}
+
