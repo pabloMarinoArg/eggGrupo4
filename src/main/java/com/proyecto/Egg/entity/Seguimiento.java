@@ -1,5 +1,6 @@
 package com.proyecto.Egg.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -13,11 +14,11 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Seguimiento {
+public class Seguimiento implements Serializable {
 
 	@Id
-	@GeneratedValue(generator="uuid")
-    @GenericGenerator(name="uuid",strategy = "uuid2")
+	/*@GeneratedValue(generator="uuid")
+    @GenericGenerator(name="uuid",strategy = "uuid2")*/
 	private String id;
 	private String comentario;
 	@Temporal(TemporalType.DATE)

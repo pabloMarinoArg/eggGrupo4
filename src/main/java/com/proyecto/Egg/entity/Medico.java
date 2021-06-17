@@ -2,6 +2,7 @@
 package com.proyecto.Egg.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -14,20 +15,18 @@ public class Medico implements Serializable {
     private String nombre;
     private String apellido;
     @OneToMany
-    private Seguimiento seguimiento;
+    private List<Seguimiento> seguimientos;
             
     public Medico() {
     }
 
-    public Seguimiento getSeguimiento() {
-        return seguimiento;
+    public List<Seguimiento> getSeguimientos() {
+        return seguimientos;
     }
 
-    public void setSeguimiento(Seguimiento seguimiento) {
-        this.seguimiento = seguimiento;
+    public void setSeguimientos(List<Seguimiento> seguimientos) {
+        this.seguimientos = seguimientos;
     }
-
-    
     
     public long getMatricula() {
         return matricula;

@@ -5,28 +5,40 @@
  */
 package com.proyecto.Egg.entity;
 
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.GenericGenerator;
 
-
-public class Usuario {
+@Entity
+public class Usuario implements Serializable {
     
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+ /*   @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")*/
     private long id;
     private String username;
     private String password;
     private String rol;
     private String mail;
     @OneToMany
-    private Roles roles;
+    private List<Roles> roles;
     
     
     public Usuario() {
     }
+
+    public List<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Roles> roles) {
+        this.roles = roles;
+    }
+
 
     public long getId() {
         return id;
