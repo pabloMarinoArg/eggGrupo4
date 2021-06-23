@@ -5,9 +5,12 @@ package com.proyecto.Egg.service;
 import com.proyecto.Egg.entity.Usuario;
 import com.proyecto.Egg.repository.RolRepository;
 import com.proyecto.Egg.repository.UsuarioRepository;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -33,6 +36,28 @@ public class UsuarioService {
         usuarioRepository.save(usuarioo);
         
     }
+
+    @Transactional(readOnly=true)
+    public List<Usuario> listarUsuarios(){
+        return usuarioRepository.findAll();
+
+
+    }
+    @Transactional
+    public Usuario buscarUsuarioPorId(String id){
+
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+
+        return usuarioOptional.orElse(null);
+    }
+
+    @Transactional
+    public void eliminar(String id){
+
+        usuarioRepository.deleteById(id);
+
+    }
+
     
     
 }
