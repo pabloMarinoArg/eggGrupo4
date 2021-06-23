@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 public class Medico implements Serializable {
     
     @Id
-    private long matricula;
+    private Long matricula;
     private String nombre;
     private String apellido;
     @OneToMany
@@ -28,12 +28,8 @@ public class Medico implements Serializable {
         this.seguimientos = seguimientos;
     }
     
-    public long getMatricula() {
+    public Long getMatricula() {
         return matricula;
-    }
-
-    public void setMatricula(long matricula) {
-        this.matricula = matricula;
     }
 
     public String getNombre() {
@@ -51,7 +47,8 @@ public class Medico implements Serializable {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    
-    
-    
+
+    public void setMatricula(Long matricula) {
+        this.matricula = matricula;
+    }
 }

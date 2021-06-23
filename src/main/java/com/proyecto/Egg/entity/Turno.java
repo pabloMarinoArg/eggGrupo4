@@ -16,12 +16,12 @@ import javax.persistence.TemporalType;
 public class Turno implements Serializable {
     
     @Id
-    //Falta el generador automatico de Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    private int hora;
+    private Integer hora;
     @ManyToOne
     private Usuario usuario;
     @ManyToOne
@@ -46,17 +46,24 @@ public class Turno implements Serializable {
     public void setPacienteVisitado(Paciente pacienteVisitado) {
         this.pacienteVisitado = pacienteVisitado;
     }
-    
-    
 
-    public long getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    
+
+    public Integer getHora() {
+        return hora;
+    }
+
+    public void setHora(Integer hora) {
+        this.hora = hora;
+    }
+
     public Date getFecha() {
         return fecha;
     }
@@ -65,13 +72,7 @@ public class Turno implements Serializable {
         this.fecha = fecha;
     }
 
-    public int getHora() {
-        return hora;
-    }
 
-    public void setHora(int hora) {
-        this.hora = hora;
-    }
     
     
     

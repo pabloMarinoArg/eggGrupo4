@@ -15,7 +15,7 @@ public class Paciente implements Serializable {
     private long dni;
     private String nombre;
     private String apellido;
-    private int edad;
+    private Integer edad;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
     
@@ -48,11 +48,11 @@ public class Paciente implements Serializable {
         this.apellido = apellido;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 
