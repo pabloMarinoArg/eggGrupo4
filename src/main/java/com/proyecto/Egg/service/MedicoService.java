@@ -19,11 +19,12 @@ public class MedicoService {
     private MedicoRepository mr;
 
     @Transactional
-    public void crearMedico(String nombre, String apellido, List<Seguimiento> listaS){
+    public void crearMedico(Long matricula, String nombre, String apellido){
         Medico medico = new Medico();
+        medico.setMatricula(matricula);
         medico.setNombre(nombre);
         medico.setApellido(apellido);
-        medico.setSeguimientos(listaS);
+
 
         mr.save(medico);
     }
