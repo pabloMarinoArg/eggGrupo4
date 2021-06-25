@@ -12,7 +12,7 @@ import javax.persistence.TemporalType;
 public class Paciente implements Serializable {
     
     @Id
-    private long dni;
+    private Long dni;
     private String nombre;
     private String apellido;
     private Integer edad;
@@ -23,12 +23,12 @@ public class Paciente implements Serializable {
     public Paciente() {
     }
 
-    
-    public long getDni() {
+
+    public Long getDni() {
         return dni;
     }
 
-    public void setDni(long dni) {
+    public void setDni(Long dni) {
         this.dni = dni;
     }
 

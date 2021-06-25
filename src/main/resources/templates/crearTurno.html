@@ -3,11 +3,43 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <nav th:replace="fragments :: nav"></nav>
+<div class="container" >
+
+    <form id="formulario" class="needs-validation" th:action="@{/turno/__${action}__}" method="POST"
+          th:object="${turno}" autocomplete="off" novalidate>
+        <input type="hidden" th:field="*{id}"/>
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="fecha" class="form-control" type="date" placeholder="Fecha de visita" th:field="*{fecha}" required/>
+            <label for="fecha">Fecha de visita</label>
+            <div class="invalid-feedback">La fecha es obligatoria</div>
+        </div>
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="hora" class="form-control" type="number" placeholder="Hora de visita" th:field="*{hora}" required/>
+            <label for="hora">Hora de visita</label>
+            <div class="invalid-feedback">La hora es obligatoria</div>
+        </div>
+        <!--<div class="form-floating mb-3 col-xl-6">
+            <select id="paciente" class="form-select" aria-label="Elegir paciente" th:field="*{pacientes}">
+                <option value="">Elija un autor</option>
+                <option th:each="p : ${pacientes}" th:text="${p.nombre}" th:value="${p.dni}"></option>
+
+
+            </select>
+            <label for="autor">Autor</label>-->
+        <div class="row">
+            <div class="col-xl-3">
+                <button class="btn btn-success" type="submit"
+                        th:text="${action == 'guardar'} ? 'Crear turno' : 'Guardar cambios'"></button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
 
 
 
-
-<img th:src="@{/img/logo.png}">
+<!-- <img th:src="@{/img/logo.png}"> -->
 
 
 
