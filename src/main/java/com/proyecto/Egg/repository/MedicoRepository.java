@@ -15,8 +15,8 @@ import java.util.List;
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
 
     @Modifying
-    @Query("UPDATE Medico m SET m.nombre= :nombre, m.apellido =:apellido, ")
-    void modificar(@Param("nombre") String nombre,@Param("apellido") String apellido);
+    @Query("UPDATE Medico m SET m.nombre= :nombre, m.apellido =:apellido WHERE m.matricula=:matricula ")
+    void modificar(@Param("matricula") Long matricula,@Param("nombre") String nombre,@Param("apellido") String apellido);
 
     List<Medico> findMedicoByApellido(String apellido);
 
