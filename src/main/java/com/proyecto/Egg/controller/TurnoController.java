@@ -39,7 +39,7 @@ public class TurnoController {
     @GetMapping("/crear")
     public ModelAndView crearTurno(){
         ModelAndView mav = new ModelAndView("crearTurno");
-        mav.addObject("rol", RolEnum.values());
+
         mav.addObject("paciente",ps.listadoPacientes());
         mav.addObject("usuario",us.listarUsuarios());
         mav.addObject("turno",new Turno());

@@ -11,7 +11,7 @@ import com.proyecto.Egg.entity.Roles;
 @Repository
 public interface RolRepository extends JpaRepository<Roles, String> {
 	@Modifying
-	@Query("UPDATE Roles r SET r.nombre WHERE r.id=:id")
+	@Query("UPDATE Roles r SET r.nombre=:nombre WHERE r.id=:id")
 	void modificar(@Param("id") String id,@Param("nombre") String nombre);
 	Roles findByNombre(String nombre);
 }

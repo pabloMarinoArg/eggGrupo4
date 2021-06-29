@@ -28,15 +28,7 @@
             </select>
             <label for="paciente">Paciente</label>
         </div>
-        <div class="form-floating mb-3 col-xl-6">
-            <select id="rol" class="form-select" aria-label="Elegir paciente" th:field="*{rol}">
-                <option value="">Elija un paciente</option>
-                <option th:each="p : ${rol}" th:text="${p.}" th:value="${p.dni}"></option>
 
-
-            </select>
-            <label for="paciente">Paciente</label>
-        </div>
            <!-- <div class="form-floating mb-3 col-xl-6">
                 <select id="usuario" class="form-select" aria-label="Elegir usuario" th:field="*{usuario}">
                     <option value="">Elija un usuario</option>

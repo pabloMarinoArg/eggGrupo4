@@ -13,6 +13,6 @@ import java.util.Date;
 @Repository
 public interface SeguimientoRepository extends JpaRepository<Seguimiento, String> {
     @Modifying
-    @Query("UPDATE seguimiento s SET s.comentario=:comentario,s.fecha=:fecha WHERE s.id=:id")
+    @Query("UPDATE Seguimiento s SET s.comentario=:comentario,s.fecha=:fecha WHERE s.id=:id")
     void modificar(@Param("id") String id,@Param("comentario") String comentario,@Param("fecha") Date fecha);
 }
