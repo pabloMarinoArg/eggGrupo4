@@ -1,5 +1,6 @@
 package com.proyecto.Egg.controller;
 
+import com.proyecto.Egg.RolEnum;
 import com.proyecto.Egg.entity.Usuario;
 
 import com.proyecto.Egg.service.UsuarioService;
@@ -38,6 +39,7 @@ public class UsuarioController {
     public ModelAndView crearUsuario(){
 
         ModelAndView mav = new ModelAndView("crearUsuario");
+        mav.addObject("rol", RolEnum.values());
         mav.addObject("usuario",new Usuario());
         mav.addObject("titulo","Crear Usuario");
         mav.addObject("action","guardar");

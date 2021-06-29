@@ -3,9 +3,7 @@ package com.proyecto.Egg.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Medico implements Serializable {
@@ -16,8 +14,18 @@ public class Medico implements Serializable {
     private String apellido;
     @OneToMany
     private List<Seguimiento> seguimientos;
-            
+    @OneToOne
+    private Usuario usuario;
+
     public Medico() {
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public List<Seguimiento> getSeguimientos() {

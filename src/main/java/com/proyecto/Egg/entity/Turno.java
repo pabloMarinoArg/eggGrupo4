@@ -20,11 +20,12 @@ public class Turno implements Serializable {
     private Long id;
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    private Integer hora;
+    @Temporal(TemporalType.TIME)
+    private Date hora;
     @ManyToOne
     private Usuario usuario;
     @ManyToOne
-    private Paciente pacienteVisitado;
+    private Paciente paciente;
    
     
     public Turno() {
@@ -38,12 +39,12 @@ public class Turno implements Serializable {
         this.usuario = usuario;
     }
 
-    public Paciente getPacienteVisitado() {
-        return pacienteVisitado;
+    public Paciente getPaciente() {
+        return paciente;
     }
 
-    public void setPacienteVisitado(Paciente pacienteVisitado) {
-        this.pacienteVisitado = pacienteVisitado;
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
 
@@ -55,11 +56,11 @@ public class Turno implements Serializable {
         this.id = id;
     }
 
-    public Integer getHora() {
+    public Date getHora() {
         return hora;
     }
 
-    public void setHora(Integer hora) {
+    public void setHora(Date hora) {
         this.hora = hora;
     }
 

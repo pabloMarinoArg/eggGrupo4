@@ -1,0 +1,230 @@
+*{
+   justify-content:center;
+  align-items: center;
+  align-content: center;
+  box-sizing: border-box;/*todol los anchos y algos incluyen el pading y margin*/
+  font-family: 'Courgette', cursive;/*para modificar la fuente con google font*/
+}
+body{
+  margin: 0;
+  padding: 0;
+  background:#beb1af;
+}
+header{
+  background-color:#CACFD2;
+  width: 100%;/*ancho del 100% de mi body*/
+  height: 30vh; /* tamaño de alto de mi header , con vh lo fijamo en tamaño segun la pantalla*/
+  }
+  .encabezado{
+    background: #beb1af;
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  }
+  .encabezado li{
+  position:relative; 
+  left:50%; 
+  top: -150px;
+
+  }
+  .encabezado img{
+   display: flex;
+  width: 80%;
+  height: 80%;
+
+  
+  }
+  /*.logo{
+  display:block;
+  width: 35%;
+  height: 100%;
+  }
+ 
+  .logo img{
+  position:relative; 
+  right:70%; 
+  top: 0px;
+  width:50%;
+  height: 100%;
+  object-fit:contain;
+  font-size: 300%;
+  font-family: sans-serif;
+  text-align: center;
+  padding-top:10%;
+  padding-bottom: 10%;
+
+  }
+*/
+
+ .encabezado{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  }
+  .logo{
+  display:block;
+  width: 35%;
+  height: 100%;
+  }
+  /*como quiero que se vea la imagen de mi logo */
+  .logo img{
+  position:relative; /* Hacemos que la posición en pantalla sea fija para que siempre se muestre en pantalla*/
+  right:110%; /* Establecemos la barra en la izquierda o derecha */
+  top: 0px; /* Bajamos la barra cantidad de px de arriba a abajo */
+  width:80%;
+  height: 100%;
+  object-fit:contain;
+  }
+
+nav{
+   
+    background-color: gray;
+    height: 100%;
+    display: flex;
+    right: 30%;
+    justify-content: flex-end;
+   
+
+}
+.menu{
+ 
+  align-items:flex-end;
+ position: static;
+ width: auto;
+ height: auto;
+ transform: translateX(0%);/*no se traslade el menu*/
+ float:right;
+
+
+}
+
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    border-top:10px solid black;
+}
+
+
+.Banner{
+    background-color: lightgray;
+    height: 130vh;
+    width: 100%;
+}
+.Banner p{
+  margin-top: 5% ;
+  margin-right:8%;
+  margin-left:8%; 
+  font-family: serif;
+  color: darkgray
+  font-size:40%;
+}
+
+.Banner h6{
+font-size:150%;
+font-family: obliqua;
+
+
+}
+
+.galeria h5{
+       margin: 0%  8% ;
+      text-decoration: center;
+      font-size: 150%;
+       font-family:book antiqua;
+     color: black;
+
+}
+.galeria{
+    margin: 0% 0%;
+    width: 100%;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border-top:5px solid black;
+    justify-content: center;
+    align-ite: center;
+  }
+
+
+.foto{
+  
+  width: 20%;
+  height: 200px;
+   margin: 1% 1%;
+   display: flex;
+}
+.foto img{
+   
+    width: 100%;
+    height: 150px;
+    margin: 1% 1%;
+    display:flex;
+    justify-content:space-around;
+    }
+footer{
+    background-color: #beb1af;
+    height: 150px;
+    border-top:10px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.social {
+ text-align:left;
+ height: 1400px;
+ position: fixed; 
+ right:0; 
+ top: 260px; 
+ flex-wrap:wrap;
+ z-index: 2000; 
+}
+
+.social ul {
+ list-style: none;
+}
+.social ul li a {
+ display: block;
+ color:#fff;
+ background: #000;
+ text-align:center;
+ font-style: oblique;
+ font-size: 0%;
+ padding: 0px 0px;
+ text-decoration: none;
+ -webkit-transition:all 500ms ease;
+ -o-transition:all 500ms ease;
+ transition:all 500ms ease; 
+}
+
+.social ul li .icon-facebook {background:#fff  ;} 
+.social ul li .icon-instagram {background: #fff;}
+.social ul li .icon-whatsapp {background-color:#fff;}
+.social ul li .icon-mail { background: #fff  ;}
+
+.social ul li a:hover {
+ background: #A6ACAF;
+
+}
+.social img{
+ padding: 0%;
+ margin:0;
+ border: 0.4px solid black;
+ width: 35px;
+ height: 35px;
+}
+
+
+ 
+
+
+
+
+ /*<!--<li><a href="#" class="enlace fas fa-question-circle"">Institucion</a></li>-->
+    <!--  <li><a href="#" class="enlace fas fa-address-book">contacto</a></li>
+      <li><a href="#" class="enlace fas fa-map-marked-alt">Ubicacion</a></li>*/
