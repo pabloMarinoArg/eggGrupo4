@@ -22,12 +22,12 @@ public class TurnoService {
     private PacienteService ps;
 
     @Transactional
-    public void crearTurno(Date fecha,Integer hora, String usuario, Long paciente){
+    public void crearTurno(Date fecha,Date hora, String usuario, Long paciente){
         Turno turno = new Turno();
         turno.setFecha(fecha);
         turno.setHora(hora);
         turno.setUsuario(us.buscarUsuarioPorId(usuario));
-        turno.setPacienteVisitado(ps.buscarPacientePorId(paciente));
+        turno.setPaciente(ps.buscarPacientePorId(paciente));
 
         tr.save(turno);
     }

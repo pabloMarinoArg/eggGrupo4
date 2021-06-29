@@ -1,8 +1,10 @@
 package com.proyecto.Egg.controller;
 
+import com.proyecto.Egg.RolEnum;
 import com.proyecto.Egg.entity.Turno;
 import com.proyecto.Egg.service.PacienteService;
 import com.proyecto.Egg.service.TurnoService;
+import com.proyecto.Egg.service.UsuarioService;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -22,6 +24,8 @@ public class TurnoController {
     private TurnoService ts;
     @Autowired
     private PacienteService ps;
+    @Autowired
+    private UsuarioService us;
 
     @GetMapping
     public ModelAndView listarTurno(){
@@ -35,7 +39,9 @@ public class TurnoController {
     @GetMapping("/crear")
     public ModelAndView crearTurno(){
         ModelAndView mav = new ModelAndView("crearTurno");
-        mav.addObject("pacientes",ps.listadoPacientes());
+        mav.addObject("rol", RolEnum.values());
+        mav.addObject("paciente",ps.listadoPacientes());
+        mav.addObject("usuario",us.listarUsuarios());
         mav.addObject("turno",new Turno());
         mav.addObject("titulo","Crear Turno");
         mav.addObject("action","guardar");
@@ -55,7 +61,7 @@ public class TurnoController {
     private Paciente pacienteVisitado;*/
 
     @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,@Param("hora") Integer hora,@Param("usuarioId") String usuarioId,@Param("paciente") Long paciente){
+    public RedirectView guardar(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,@RequestParam @DateTimeFormat(pattern = "HH:mm") Date hora,@Param("usuarioId") String usuarioId,@Param("paciente") Long paciente){
 
         ts.crearTurno(fecha, hora, usuarioId, paciente);
 
