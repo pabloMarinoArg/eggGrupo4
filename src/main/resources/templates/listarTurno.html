@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html lang="es" xmlns="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<nav th:replace="fragments :: nav"></nav>
+<div class="container">
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#ID turno</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Paciente</th>
+        <th scope="col">Opciones</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="t : ${listaTurno}">
+        <td th:text="${t.id}"></td>
+        <td th:text="${t.fecha}"></td>
+        <td th:text="${t.hora}"></td>
+        <td th:text="${t.paciente.nombre}"></td>
+        <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
+            <a class="btn btn-secondary btn-sm" th:href="@{/turno/editar/__${t.id}__}">Editar</a>
+            <form th:action="@{/turno/eliminar/__${t.id}__}" method="post">
+                <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+
+    </tbody>
+
+</table>
+<a th:href="@{/turno/crear}"><button type="button" class="btn btn-outline-success" >Agregar Turno</button></a>
+</div>
+
+
+<div th:replace="fragments :: bootstrapS"></div>
+</body>
+</html>

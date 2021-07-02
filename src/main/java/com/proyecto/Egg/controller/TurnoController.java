@@ -39,10 +39,8 @@ public class TurnoController {
     @GetMapping("/crear")
     public ModelAndView crearTurno(){
         ModelAndView mav = new ModelAndView("crearTurno");
-
-        mav.addObject("paciente",ps.listadoPacientes());
-        mav.addObject("usuario",us.listarUsuarios());
         mav.addObject("turno",new Turno());
+        mav.addObject("paciente",ps.listadoPacientes());
         mav.addObject("titulo","Crear Turno");
         mav.addObject("action","guardar");
         return mav;
@@ -61,9 +59,9 @@ public class TurnoController {
     private Paciente pacienteVisitado;*/
 
     @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,@RequestParam @DateTimeFormat(pattern = "HH:mm") Date hora,@Param("usuarioId") String usuarioId,@Param("paciente") Long paciente){
+    public RedirectView guardar(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,@RequestParam @DateTimeFormat(pattern = "HH:mm") Date hora,@Param("paciente") Long paciente){
 
-        ts.crearTurno(fecha, hora, usuarioId, paciente);
+        ts.crearTurno(fecha, hora, paciente);
 
         return new RedirectView("/turno");
     }

@@ -79,8 +79,9 @@ header{
 
 nav{
    
-    background-color: gray;
+    background-color: green;
     height: 100%;
+    width:100%
     display: flex;
     right: 30%;
     justify-content: flex-end;
