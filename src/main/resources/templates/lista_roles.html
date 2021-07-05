@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="lista_roles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Lista roles</title>
+  </head>
+  <body>
+    <header>
+      <img class=logo src="img/logo.png" alt="logo">
+    <h2 class="title">LISTA DE ROLES </h2>
+  <section class="header-button">
+      <a href="lista_pacientes.html" class="button"><span class="fab fa-readme"></span>Lista</a>
+  <a href="crear_roles.html" class="button"><span class="fas fa-edit"></span>crear roles</a>
+    <a href="index.html" class="button"><span class="fas fa-home"></span>Inicio</a>
+  </section>
+
+</header>
+
+
+<div class="table-container">
+  <table class="table-cebra">
+    <thead>
+      <tr>
+      <th>ID</th>
+      <th>NOMBRE</th>
+      <th scope="col">ACCIONES</th>
+      <tbody>
+
+                  <tr th:each="c : ${roles}">
+                    <td th:text="${id}"></td>
+                    <td th:text="${nombre}"></td>
+
+      <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
+                 <a class="btn green" th:href="@{/roles/modificar/__${id}__}">Editar</a>
+                  <form th:action="@{/roles/eliminar/__${id}__}" method="post">
+                    <a class="btn red"  type="submit">Eliminar</a>
+                 </form>
+             </td>
+         </tr>
+
+       </tbody>
+     </table>
+
+     <a class="btn tm" th:href="@{/roles/crear}"type="button">AGREGAR </a>
+
+
+
+</div>
+  </body>
+</html>
