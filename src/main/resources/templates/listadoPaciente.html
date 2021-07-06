@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="lista_pacientes.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      <link rel="stylesheet" th:href="@{/css/lista_pacientes.css}">
     <title>Lista pacientes</title>
   </head>
   <body>
     <header>
-      <img class=logo src="img/logo.png" alt="logo">
+      <img class=logo th:src="@{/img/logo.png}" alt="logo">
     <h2 class="title"> LISTA DE PACIENTES </h2>
   <section class="header-button">
-      <a href="index.html" class="button"><span class="fab fa-readme"></span>Lista</a>
-  <a href="crear_paciente.html" class="button"><span class="fas fa-edit"></span>Agregar</a>
-    <a href="index.html" class="button"><span class="fas fa-home"></span>Inicio</a>
+      <a th:href="@{/paciente}" class="button"><span class="fab fa-readme"></span>Lista</a>
+  <a th:href="@{/paciente/crear}" class="button"><span class="fas fa-edit"></span>Agregar</a>
+    <a th:href="@{/}" class="button"><span class="fas fa-home"></span>Inicio</a>
   </section>
 
 </header>
@@ -30,12 +31,12 @@
       <th class="fecha">FECHA DE NACIMIENTO</th>
       <th scope="col">ACCIONES</th>
       <tbody>
-                  <tr th:each="c : ${paciente}">
-                    <td th:text="${dni}"></td>
-                    <td th:text="${nombre}"></td>
-                    <td th:text="${apellido}"></td>
-                    <td th:text="${edad}"></td>
-                    <td th:text="${fecha_nacimiento}"></td>
+                  <tr th:each="c : ${listaPaciente}">
+                    <td th:text="${c.dni}"></td>
+                    <td th:text="${c.nombre}"></td>
+                    <td th:text="${c.apellido}"></td>
+                    <td th:text="${c.edad}"></td>
+                    <td th:text="${c.nacimiento}"></td>
                         
       <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
                  <a class="btn green" th:href="@{/paciente/modificar/__${dni}__}">Editar</a>
@@ -48,7 +49,7 @@
        </tbody>
      </table>
 
-     <a class="btn tm" th:href="@{/paciente/crear}"type="button">AGREGAR PACIENTE</a>
+     <a class="btn tm" th:href="@{/paciente/crear}" type="button">AGREGAR PACIENTE</a>
 
 
 

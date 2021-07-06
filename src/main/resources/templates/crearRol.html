@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="crear_roles.css">
@@ -8,12 +8,12 @@
   </head>
   <body>
     <header>
-      <img class=logo src="img/logo.png" alt="logo">
-    <h2 class="title"> REGISTRO ROLES </h2>
+      <img class=logo th:src="@{/img/logo.png}" alt="logo">
+    <h2 class="title" th:text="${titulo}}">  </h2>
   <section class="header-button">
-      <a href="lista_paciente.html" class="button"><span class="fab fa-readme"></span>Lista</a>
-  <a href="lista_roles.html" class="button"><span class="fas fa-edit"></span>Roles</a>
-    <a href="index.html" class="button"><span class="fas fa-home"></span>Inicio</a>
+      <a th:href="@{/rol}" class="button"><span class="fab fa-readme"></span>Lista</a>
+  <a th:href="@{/rol/crear}" class="button"><span class="fas fa-edit"></span>Roles</a>
+    <a th:href="@{/}" class="button"><span class="fas fa-home"></span>Inicio</a>
   </section>
 
 </header>

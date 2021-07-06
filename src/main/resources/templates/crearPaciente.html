@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="crear_paciente.css">
+    <link rel="stylesheet" th:href="@{/css/crear_paciente.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Formulario de paciente</title>
   </head>
   <body>
     <header>
-      <img class=logo src="img/logo.png" alt="logo">
+      <img class=logo th:src="@{img/logo.png}" alt="logo">
     <h2 class="title"> REGISTRO PACIENTES </h2>
   <section class="header-button">
-      <a href="lista_paciente.html" class="button"><span class="fab fa-readme"></span>Lista</a>
-  <a href="index.html" class="button"><span class="fas fa-edit"></span>Agregar</a>
-    <a href="index.html" class="button"><span class="fas fa-home"></span>Inicio</a>
+      <a th:href="@{/paciente}" class="button"><span class="fab fa-readme"></span>Lista</a>
+  <a th:href="@{/paciente/crear}" class="button"><span class="fas fa-edit"></span>Agregar</a>
+    <a th:href="@{/}" class="button"><span class="fas fa-home"></span>Inicio</a>
   </section>
 
 </header>
