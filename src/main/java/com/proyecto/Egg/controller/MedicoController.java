@@ -3,6 +3,7 @@ package com.proyecto.Egg.controller;
 import com.proyecto.Egg.entity.Medico;
 import com.proyecto.Egg.repository.MedicoRepository;
 import com.proyecto.Egg.service.MedicoService;
+import com.proyecto.Egg.service.UsuarioService;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -22,6 +23,8 @@ public class MedicoController {
 
     @Autowired
     private MedicoService ms;
+    @Autowired
+    private UsuarioService us;
 
 
     @GetMapping
@@ -39,14 +42,15 @@ public class MedicoController {
 
         ModelAndView mav = new ModelAndView("crearMedico");
         mav.addObject("medico",new Medico());
+        mav.addObject("listaUsuario",us.listarUsuarios());
         mav.addObject("titulo","Crear Medico");
         mav.addObject("action","guardar");
         return mav;
 
     }
     @PostMapping("/guardar")
-    public RedirectView guardar(@Param("matricula") Long matricula, @Param("nombre") String nombre, @Param("apellido") String apellido){
-        ms.crearMedico(matricula,nombre,apellido);
+    public RedirectView guardar(@Param("matricula") Long matricula, @Param("nombre") String nombre, @Param("apellido") String apellido,@Param("usuario") String usuario){
+        ms.crearMedico(matricula,nombre,apellido,usuario);
 
     return new RedirectView("/medico");
     }

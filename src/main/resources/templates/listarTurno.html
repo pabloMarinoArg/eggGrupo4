@@ -2,8 +2,11 @@
 <html lang="es" xmlns="http://www.thymeleaf.org">
 <head th:replace="fragments :: head"></head>
 <body>
-<nav th:replace="fragments :: nav"></nav>
 <div class="container">
+<nav th:replace="fragments :: nav"></nav>
+
+    <h1 th:text="${titulo}"></h1>
+    <hr>
 <table class="table">
     <thead>
     <tr>

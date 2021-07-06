@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Proyecto EGG</title>
 		<meta charset="utf-8">
@@ -11,14 +11,15 @@
 
 	</head>
 	<body>
-		<header>
 
+		<header>
+            <nav th:replace="fragments :: nav"></nav>
     <div class="encabezado">
       <div class="logo">
-        <img src="imagenes/logo.png" alt="LOGO">
-
+        <img th:src="@{img/logo.png}" alt="LOGO">
+      </div>
         <h1></h1>
- <ul class="menu">
+ <!--<ul class="menu">
           
           <li><a href="#" class="enlace fas fa-question-circle">Institucion </a></li>
           <li><a href="#" class="enlace fas fa-address-book">Contacto</a></li>
@@ -26,7 +27,7 @@
            <li><a href="login.html" class="enlace fas fa-address-book">Login </a></li>
         </ul>
      </div>
-   </div>	
+   </div>-->
 
 
 	</header>

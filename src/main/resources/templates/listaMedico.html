@@ -2,14 +2,17 @@
 <html lang="es" xmlns="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments :: head"></head>
 <body>
+<div class="container">
 <nav th:replace="fragments :: nav"></nav>
-
+<h1 th:text="${titulo}"></h1>
+<hr>
 <table class="table">
     <thead>
     <tr>
         <th scope="col">Matricula</th>
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
+        <th scope="col">Mail</th>
         <th scope="col">Opciones</th>
 
     </tr>
@@ -19,7 +22,8 @@
         <td th:text="${m.matricula}"></td>
         <td th:text="${m.nombre}"></td>
         <td th:text="${m.apellido}"></td>
-        <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
+        <td th:text="${m.usuario}"></td>
+                <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
             <a class="btn btn-secondary btn-sm" th:href="@{/medico/editar/__${m.matricula}__}">Editar</a>
             <form th:action="@{/medico/eliminar/__${m.matricula}__}" method="post">
                 <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
@@ -30,6 +34,8 @@
     </tbody>
 </table>
 
+<a th:href="@{/medico/crear}"><button type="button" class="btn btn-outline-success" >Agregar Médico</button></a>
+</div>
 
 
 <!--<div th:replace="fragments :: bootstrapS"></div>-->

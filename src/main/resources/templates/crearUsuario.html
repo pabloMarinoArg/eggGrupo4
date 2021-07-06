@@ -2,36 +2,43 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head"></head>
 <body>
+<div class="container" >
 <nav th:replace="fragments :: nav"></nav>
 
-<div class="container" >
+
     <h1 th:text="${titulo}"></h1>
-    <form id="formulario" class="needs-validation" th:action="@{/turno/__${action}__}" method="POST"
-          th:object="${turno}" autocomplete="off" novalidate>
+    <hr>
+    <form id="formulario" class="needs-validation" th:action="@{/usuario/__${action}__}" method="POST"
+          th:object="${usuario}" autocomplete="off" novalidate>
         <input type="hidden" th:field="*{id}"/>
         <div class="form-floating mb-3 col-xl-6">
-            <input id="fecha" class="form-control" type="date" placeholder="Fecha de visita" th:field="*{fecha}" required/>
-            <label for="fecha">Fecha de visita</label>
-            <div class="invalid-feedback">La fecha es obligatoria</div>
+            <input id="username" class="form-control" type="text" placeholder="Ingrese nombre de usuario" th:field="*{username}" required/>
+            <label for="username">Nombre de usuario</label>
+            <div class="invalid-feedback">El usuario es obligatorio</div>
         </div>
         <div class="form-floating mb-3 col-xl-6">
-            <input id="hora" class="form-control" type="time" placeholder="Hora de visita" th:field="*{hora}" required/>
-            <label for="hora">Hora de visita</label>
-            <div class="invalid-feedback">La hora es obligatoria</div>
+            <input id="password" class="form-control" type="password" placeholder="Ingrese password" th:field="*{password}" required/>
+            <label for="password">Password</label>
+            <div class="invalid-feedback">El password es obligatorio</div>
         </div>
         <div class="form-floating mb-3 col-xl-6">
-            <select id="paciente" class="form-select" aria-label="Elegir paciente" th:field="*{paciente}">
-                <option value="">Elija un paciente</option>
-                <option th:each="p : ${paciente}" th:text="${p.nombre}" th:value="${p.dni}"></option>
+            <input id="mail" class="form-control" type="email" placeholder="Ingrese correo" th:field="*{mail}" required/>
+            <label for="mail">E-Mail</label>
+
+        </div>
+        <div class="form-floating mb-3 col-xl-6">
+            <select id="rol" class="form-select" aria-label="Elegir rol" th:field="*{rol}">
+                <option value="">Elija un rol</option>
+                <option th:each="rol : ${listaRol}" th:text="${rol.nombre}" th:value="${rol.id}"></option>
 
 
             </select>
-            <label for="paciente">Paciente</label>
-            <input type="text">
+            <label for="rol">Rol</label>
+        <br>
         <div class="row">
             <div class="col-xl-3">
                 <button class="btn btn-success" type="submit"
-                        th:text="${action == 'guardar'} ? 'Crear turno' : 'Guardar cambios'"></button>
+                        th:text="${action == 'guardar'} ? 'Crear Usuario' : 'Guardar cambios'"></button>
             </div>
         </div>
         </div>

@@ -3,6 +3,7 @@ package com.proyecto.Egg.controller;
 import com.proyecto.Egg.RolEnum;
 import com.proyecto.Egg.entity.Usuario;
 
+import com.proyecto.Egg.service.RolesService;
 import com.proyecto.Egg.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -24,7 +25,8 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService us;
-
+    @Autowired
+    private RolesService rs;
     @GetMapping
     public ModelAndView listarUsuarios(){
 
@@ -39,7 +41,7 @@ public class UsuarioController {
     public ModelAndView crearUsuario(){
 
         ModelAndView mav = new ModelAndView("crearUsuario");
-        mav.addObject("rol", RolEnum.values());
+        mav.addObject("listaRol", rs.listadoRoles() );
         mav.addObject("usuario",new Usuario());
         mav.addObject("titulo","Crear Usuario");
         mav.addObject("action","guardar");
@@ -60,7 +62,7 @@ public class UsuarioController {
 
         us.crearUsuario(username, password, rol, mail);
 
-        return new RedirectView("/listaUsuario");
+        return new RedirectView("/usuario");
     }
 
     @PostMapping("/eliminar/{id}")
@@ -68,7 +70,7 @@ public class UsuarioController {
 
         us.eliminar(id);
 
-        return new RedirectView("/listaUsuarios");
+        return new RedirectView("/usuario");
     }
 
 
