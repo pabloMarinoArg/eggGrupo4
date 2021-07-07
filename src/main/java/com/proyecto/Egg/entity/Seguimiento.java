@@ -23,8 +23,8 @@ public class Seguimiento implements Serializable {
 	private String comentario;
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
-	@OneToOne
-	private Usuario usuario;
+	/*@OneToOne
+	private Usuario usuario;*/
 	@ManyToOne
 	private Medico medico;
 	
@@ -51,12 +51,12 @@ public class Seguimiento implements Serializable {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public Usuario getUsuario() {
+	/*public Usuario getUsuario() {
 		return usuario;
 	}
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
+	}*/
 	public Medico getMedico() {
 		return medico;
 	}
