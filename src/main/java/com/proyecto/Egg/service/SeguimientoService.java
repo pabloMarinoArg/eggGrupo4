@@ -25,12 +25,12 @@ public class SeguimientoService {
     private MedicoService ms;
 
     @Transactional
-    public void crearSeguimiento(String comentario, Date fecha, String usuario, Long matricula){
+    public void crearSeguimiento(String comentario, Date fecha, Long matricula){
         Seguimiento seguimiento = new Seguimiento();
 
         seguimiento.setComentario(comentario);
         seguimiento.setFecha(fecha);
-        seguimiento.setUsuario(us.buscarUsuarioPorId(usuario));
+      
         seguimiento.setMedico(ms.buscarMedicoPorId(matricula));
 
         sr.save(seguimiento);
