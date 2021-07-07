@@ -19,24 +19,25 @@
 </header>
 <div class="form">
 
-
+      
       <section class="form-register">
-
+       <form th:action="@{/paciente/__${action}__}" method="POST" th:object="${paciente}>
       <h3>Ingrese el dni del paciente</h3>
-      <input class="controls" type="number" name="dni" id="dni" placeholder="Ingrese el dni del paciente" required>
+      <input th:field="*{dni}" class="controls" type="number" id="dni" placeholder="Ingrese el dni del paciente" required>
       <h3>Ingrese el nombre del paciente</h3>
-      <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre del paciente" required>
+      <input th:field="*{nombre}" class="controls" type="text" id="nombre" placeholder="Ingrese el nombre del paciente" required>
       <h3>Ingrese el Apellido del paciente</h3>
-      <input class="controls" type="text" name="apellido" id="apellido" placeholder="Ingrese el Apellido del paciente" required>
+      <input th:field="*{apellido}" class="controls" type="text" name="apellido" id="apellido" placeholder="Ingrese el Apellido del paciente" required>
       <h3>Ingrese la edad de paciente</h3>
-      <input class="controls" type="number" name="edad" id="fn" placeholder="Ingrese la edad del paciente" required>
+      <!--<input class="controls" type="number" name="edad" id="fn" placeholder="Ingrese la edad del paciente" required>-->
       <h3>Ingrese fecha de nacimiento paciente</h3>
-      <input class="controls" type="date" name="Fecha de nacimiento" id="fn" placeholder="Ingrese fecha de nacimiiento paciente" required>
+      <input th:field="*{nacimiento}" class="controls" type="date" name="Fecha de nacimiento" id="fn" placeholder="Ingrese fecha de nacimiiento paciente" required>
 
 
-  <input class="botons"  type="submit" value="CREAR">
-
+  <button class="botons"  type="submit" th:text="${action=='guardar'} ? 'Ingresar Paciente': 'Modificar Paciente'"> </button>
+        </form>
     </section>
+        
     </div>
   </body>
 </html>
