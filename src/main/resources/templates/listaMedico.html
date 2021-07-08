@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html lang="es" xmlns="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments :: head"></head>
 <body>
 <div class="container">
@@ -22,7 +22,7 @@
         <td th:text="${m.matricula}"></td>
         <td th:text="${m.nombre}"></td>
         <td th:text="${m.apellido}"></td>
-        <td th:text="${m.usuario}"></td>
+        <td th:text="${m.usuario?.mail}"></td>
                 <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
             <a class="btn btn-secondary btn-sm" th:href="@{/medico/editar/__${m.matricula}__}">Editar</a>
             <form th:action="@{/medico/eliminar/__${m.matricula}__}" method="post">

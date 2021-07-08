@@ -9,7 +9,7 @@
   <body>
     <header>
       <img class=logo th:src="@{/img/logo.png}" alt="logo">
-    <h2 class="title" th:text="${titulo}}">  </h2>
+    <h2 class="title" th:text="${titulo}">  </h2>
   <section class="header-button">
       <a th:href="@{/rol}" class="button"><span class="fab fa-readme"></span>Lista</a>
   <a th:href="@{/rol/crear}" class="button"><span class="fas fa-edit"></span>Roles</a>
@@ -20,10 +20,10 @@
 <div class="form">
   <section class="form-register">
 
-  <h3>Ingrese el id</h3>
-  <input class="controls" type="number" name="id" id="id" placeholder="Id" required>
+
+  <input type="hidden" th:field="*{id}">
   <h3>Ingrese nombra</h3>
-  <input class="controls" type="text" name="nombre" id="nombre" placeholder="nombre" required>
+  <input  class="controls" type="text" name="nombre" id="nombre" placeholder="nombre" required>
 
 
 <input class="botons"  type="submit" value="CREAR">

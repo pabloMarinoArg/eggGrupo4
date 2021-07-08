@@ -21,9 +21,9 @@
 
       
       <section class="form-register">
-       <form th:action="@{/paciente/__${action}__}" method="POST" th:object="${paciente}>
+       <form th:action="@{/paciente/__${action}__}" method="POST" th:object="${paciente}">
       <h3>Ingrese el dni del paciente</h3>
-      <input th:field="*{dni}" class="controls" type="number" id="dni" placeholder="Ingrese el dni del paciente" required>
+      <input th:field="*{dni}" class="controls" type="number" id="dni" placeholder="Ingrese el dni del paciente" required/>
       <h3>Ingrese el nombre del paciente</h3>
       <input th:field="*{nombre}" class="controls" type="text" id="nombre" placeholder="Ingrese el nombre del paciente" required>
       <h3>Ingrese el Apellido del paciente</h3>

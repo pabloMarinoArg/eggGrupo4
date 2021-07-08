@@ -31,7 +31,7 @@
       <th class="fecha">FECHA DE NACIMIENTO</th>
       <th scope="col">ACCIONES</th>
       <tbody>
-                  <tr th:each="c : ${listaPaciente}">
+                  <tr th:each="c : ${listaPacientes}">
                     <td th:text="${c.dni}"></td>
                     <td th:text="${c.nombre}"></td>
                     <td th:text="${c.apellido}"></td>
@@ -39,9 +39,9 @@
                     <td th:text="${c.nacimiento}"></td>
                         
       <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
-                 <a class="btn green" th:href="@{/paciente/modificar/__${dni}__}">Editar</a>
-                  <form th:action="@{/paciente/eliminar/__${dni}__}" method="post">
-                    <a class="btn red"  type="submit">Eliminar</a>
+                 <a class="btn green" th:href="@{/paciente/modificar/__${c.dni}__}">Editar</a>
+                  <form th:action="@{/paciente/eliminar/__${c.dni}__}" method="POST">
+                    <button class="btn red"  type="submit">Eliminar</button>
                  </form>
              </td>
          </tr>
