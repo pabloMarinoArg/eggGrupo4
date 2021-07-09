@@ -30,6 +30,12 @@ public class TurnoService {
 
         tr.save(turno);
     }
+    @Transactional
+    public void modificarTurno(Long id, Date fecha, Date hora, Long paciente){
+        
+        tr.modificar(id,fecha,hora,paciente);
+        
+    }
    /* public void crearTurno(Date fecha,Date hora, String usuario, Long paciente){
         Turno turno = new Turno();
         turno.setFecha(fecha);
