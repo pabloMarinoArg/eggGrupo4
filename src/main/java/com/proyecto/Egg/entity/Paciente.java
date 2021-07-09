@@ -48,13 +48,7 @@ public class Paciente implements Serializable {
         this.apellido = apellido;
     }
 
-    public Integer getEdad() {
-        return edad;
-    }
-
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
+   
 
     public Date getNacimiento() {
         return nacimiento;
