@@ -58,9 +58,17 @@ public class UsuarioController {
     }
 
     @PostMapping("/guardar")
-    public RedirectView guardar(@Param("username") String username,@Param("password") String password,@Param("mail") String mail,@Param("rol") String rol){
+    public RedirectView guardar(@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("mail") String mail,@RequestParam("rol") String rol){
 
         us.crearUsuario(username, password, rol, mail);
+
+        return new RedirectView("/usuario");
+    }
+    
+     @PostMapping("/editar")
+    public RedirectView guardar(@RequestParam("id") String id,@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("mail") String mail,@RequestParam("rol") String rol){
+
+        us.crearUsuario(id,username, password, rol, mail);
 
         return new RedirectView("/usuario");
     }
