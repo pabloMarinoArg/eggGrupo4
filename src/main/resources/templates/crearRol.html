@@ -2,7 +2,7 @@
 <html lang="es" dir="ltr" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="crear_roles.css">
+    <link rel="stylesheet" th:href="@{/css/crear_roles.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Formulario de roles</title>
   </head>
@@ -20,14 +20,14 @@
 <div class="form">
   <section class="form-register">
 
-
+  <form th:action="@{/rol/crear}" method="POST" th:object="*{rol}">
   <input type="hidden" th:field="*{id}">
-  <h3>Ingrese nombra</h3>
-  <input  class="controls" type="text" name="nombre" id="nombre" placeholder="nombre" required>
+  <h3>Ingrese nombre del rol</h3>
+  <input  class="controls" type="text" th:field="*{nombre}" id="nombre" placeholder="nombre" required>
 
            
-            <button type="submit" name="Crear" >Crear</button> 
-           
+            <button type="submit" th:text="${action=='guardar'}? 'Crear rol':'Modificar Rol'" ></button> 
+  </form>         
 </section>
 </div>
 </body>
