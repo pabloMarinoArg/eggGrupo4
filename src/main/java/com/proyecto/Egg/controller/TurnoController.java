@@ -48,7 +48,7 @@ public class TurnoController {
     }
     
      @GetMapping("/modificar/{id}")
-    public ModelAndView crearTurno(@PathVariable Long id){
+    public ModelAndView modificarTurno(@PathVariable Long id){
         ModelAndView mav = new ModelAndView("crearTurno");
         mav.addObject("turno",ts.buscarTurnoPorId(id));
         mav.addObject("paciente",ps.listadoPacientes());
