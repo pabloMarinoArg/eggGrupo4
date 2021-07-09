@@ -21,6 +21,13 @@ public class RolesService {
         rol.setNombre(nombre);
         rr.save(rol);
     }
+    
+    @Transactional
+    public void modificarRol(String id, String nombre){
+    
+        rr.modificar(id,nombre);
+    
+    }
 
     @Transactional
     public void eliminar(String id){
