@@ -46,6 +46,17 @@ public class TurnoController {
         return mav;
 
     }
+    
+     @GetMapping("/modificar/{id}")
+    public ModelAndView crearTurno(@PathVariable Long id){
+        ModelAndView mav = new ModelAndView("crearTurno");
+        mav.addObject("turno",ts.buscarTurnoPorId(id));
+        mav.addObject("paciente",ps.listadoPacientes());
+        mav.addObject("titulo","Editar Turno");
+        mav.addObject("action","editar");
+        return mav;
+
+    }
 
     /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,9 +70,16 @@ public class TurnoController {
     private Paciente pacienteVisitado;*/
 
     @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,@RequestParam @DateTimeFormat(pattern = "HH:mm") Date hora,@Param("paciente") Long paciente){
+    public RedirectView guardar(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,@RequestParam @DateTimeFormat(pattern = "HH:mm") Date hora,@RequestParam("paciente") Long paciente){
 
         ts.crearTurno(fecha, hora, paciente);
+
+        return new RedirectView("/turno");
+    }
+    @PostMapping("/editar")
+    public RedirectView editar(@RequestParam("id") Long id,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,@RequestParam @DateTimeFormat(pattern = "HH:mm") Date hora,@RequestParam("paciente") Long paciente){
+
+        ts.modificarTurno(id,fecha, hora, paciente);
 
         return new RedirectView("/turno");
     }
