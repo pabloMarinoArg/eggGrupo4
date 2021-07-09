@@ -39,6 +39,17 @@ public class PacienteController {
         return mav;
 
     }
+    
+    @GetMapping("/modificar")
+    public ModelAndView modificarPaciente(@PathVariable Long dni){
+    
+        ModelAndView mav = new ModelAndView("crearPaciente");
+        mav.addObject("paciente",ps.buscarPacientePorId(dni));
+        mav.addObject("titulo","Modificar Paciente");
+        mav.addObject("action","editar");
+        return mav;
+    
+    }
 
     /*
     * private long dni;
@@ -50,10 +61,16 @@ public class PacienteController {
     * */
 
     @PostMapping("/guardar")
-    public RedirectView guardar(@Param("dni") Long dni, @Param("nombre") String nombre, @Param("apellido") String apellido, @Param("edad") Integer edad, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento){
+    public RedirectView guardar(@Param("dni") Long dni, @Param("nombre") String nombre, @Param("apellido") String apellido,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento){
 
-        ps.crearPaciente(dni, nombre, apellido, edad, nacimiento);
+        ps.crearPaciente(dni, nombre, apellido,nacimiento);
 
+        return new RedirectView("/paciente");
+    }
+    
+    @PostMapping("/editar/{dni}")
+    public RedirectView (@PathVariable("dni") Long dni, @Param("nombre") String nombre, @Param("apellido") String apellido,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento){
+        ps.modificarPaciente(dni,nombre,apellido,nacimiento);
         return new RedirectView("/paciente");
     }
 
