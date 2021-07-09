@@ -69,7 +69,7 @@ public class PacienteController {
     }
     
     @PostMapping("/editar")
-    public RedirectView (@RequestParam("dni") Long dni, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento){
+    public RedirectView editar(@RequestParam("dni") Long dni, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento){
         ps.modificarPaciente(dni,nombre,apellido,nacimiento);
         return new RedirectView("/paciente");
     }
