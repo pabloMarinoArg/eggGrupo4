@@ -38,6 +38,16 @@ public class SeguimientoController {
         return mav;
 
     }
+   @GetMapping("/modificar/{id}")
+    public ModelAndView crearSeguimiento (){
+        ModelAndView mav = new ModelAndView("crearSeguimiento");
+        mav.addObject("seguimiento",ss.buscarSeguimientoPorId(id));
+        mav.addObject("titulo","Crear Seguimiento");
+        mav.addObject("action","guardar");
+        return mav;
+
+    }
+	
     /*private String id;
 	private String comentario;
 	@Temporal(TemporalType.DATE)
@@ -48,12 +58,21 @@ public class SeguimientoController {
 	private Medico medico;
     * */
     @PostMapping("/guardar")
-    public RedirectView guardar(@Param("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha,@Param("medicoId") Long matricula){
+    public RedirectView guardar(@RequestParam("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha,@RequestParam("medicoId") Long matricula){
 
         ss.crearSeguimiento(comentario, fecha, matricula);
 
         return new RedirectView("/seguimiento");
     }
+    @PostMapping("/editar")
+    public RedirectView guardar(@RequestParam("id")String id,@RequestParam("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha,@RequestParam("medicoId") Long matricula){
+
+        ss.crearSeguimiento(id,comentario, fecha, matricula);
+
+        return new RedirectView("/seguimiento");
+    }
+	
+	
 
     @PostMapping("/eliminar/{id}")
     public RedirectView eliminar (@PathVariable String id){
