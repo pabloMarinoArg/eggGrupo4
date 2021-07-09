@@ -67,7 +67,7 @@ public class SeguimientoController {
     @PostMapping("/editar")
     public RedirectView guardar(@RequestParam("id")String id,@RequestParam("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha,@RequestParam("medicoId") Long matricula){
 
-        ss.modificarSeguimiento(id,comentario, fecha, matricula);
+        ss.modificarSeguimiento(id,comentario, fecha);
 
         return new RedirectView("/seguimiento");
     }

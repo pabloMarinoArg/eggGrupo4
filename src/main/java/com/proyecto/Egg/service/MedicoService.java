@@ -36,7 +36,7 @@ public class MedicoService {
     @Transactional
     public void modificarMedico(Long matricula, String nombre, String apellido, String usuario){
     
-        mr.modificar(matricula,nombre,apellido,usuario);
+        mr.modificar(matricula,nombre,apellido);
     }
 
     @Transactional(readOnly = true)

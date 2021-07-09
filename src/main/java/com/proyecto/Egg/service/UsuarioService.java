@@ -43,6 +43,13 @@ public class UsuarioService {
 
 
     }
+
+    @Transactional
+    public void modificarUsuario(String id, String username, String password, String mail){
+        usuarioRepository.modificar(id,username,password,mail);
+
+    }
+
     @Transactional
     public Usuario buscarUsuarioPorId(String id){
 

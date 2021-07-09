@@ -8,10 +8,7 @@ import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -62,14 +59,14 @@ public class MedicoController {
     }
     
     @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam("usuario") String usuario){
+    public RedirectView guardar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, @RequestParam("usuario") String usuario){
         ms.crearMedico(matricula,nombre,apellido,usuario);
 
     return new RedirectView("/medico");
     }
     
     @PostMapping("/editar")
-    public RedirectView guardar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam("usuario") String usuario){
+    public RedirectView editar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam("usuario") String usuario){
         ms.modificarMedico(matricula,nombre,apellido,usuario);
 
     return new RedirectView("/medico");

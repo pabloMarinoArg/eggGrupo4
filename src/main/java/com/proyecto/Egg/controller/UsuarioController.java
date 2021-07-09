@@ -1,6 +1,6 @@
 package com.proyecto.Egg.controller;
 
-import com.proyecto.Egg.RolEnum;
+
 import com.proyecto.Egg.entity.Usuario;
 
 import com.proyecto.Egg.service.RolesService;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -68,7 +69,7 @@ public class UsuarioController {
      @PostMapping("/editar")
     public RedirectView guardar(@RequestParam("id") String id,@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("mail") String mail,@RequestParam("rol") String rol){
 
-        us.crearUsuario(id,username, password, rol, mail);
+        us.modificarUsuario(id,username, password, mail);
 
         return new RedirectView("/usuario");
     }

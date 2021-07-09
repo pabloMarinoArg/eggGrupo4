@@ -33,7 +33,7 @@ public class TurnoService {
     @Transactional
     public void modificarTurno(Long id, Date fecha, Date hora, Long paciente){
         
-        tr.modificar(id,fecha,hora,paciente);
+        tr.modificar(id,fecha,hora);
         
     }
    /* public void crearTurno(Date fecha,Date hora, String usuario, Long paciente){
