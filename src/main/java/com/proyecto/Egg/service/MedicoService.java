@@ -32,6 +32,12 @@ public class MedicoService {
 
         mr.save(medico);
     }
+    
+    @Transactional
+    public void modificarMedico(Long matricula, String nombre, String apellido, String usuario){
+    
+        mr.modificar(matricula,nombre,apellido,usuario);
+    }
 
     @Transactional(readOnly = true)
     public List<Medico> listarMedicoPorApellido(String apellido){
