@@ -13,6 +13,6 @@ import java.util.Date;
 @Repository
 public interface PacienteRepository  extends JpaRepository<Paciente, Long>{
     @Modifying
-    @Query("UPDATE Paciente p SET p.nombre =:nombre, p.apellido=:apellido, p.edad=:edad,p.nacimiento=:nacimiento WHERE p.dni=:dni")
-    void modificar(@Param("dni") Long dni,@Param("nombre") String nombre, @Param("apellido") String apellido, @Param("edad") Integer edad, @Param("nacimiento")Date nacimiento);
+    @Query("UPDATE Paciente p SET p.nombre =:nombre, p.apellido=:apellido,p.nacimiento=:nacimiento WHERE p.dni=:dni")
+    void modificar(@Param("dni") Long dni,@Param("nombre") String nombre, @Param("apellido") String apellido,@Param("nacimiento")Date nacimiento);
 }
