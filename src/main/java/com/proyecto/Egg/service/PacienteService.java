@@ -11,18 +11,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class PacienteService {
     @Autowired
     private PacienteRepository pr;
-
+    /*Saco el atributo edad ya que no es necesario persistirlo, se puede calcular al momento de mostrar la info con la api java.time*/
     @Transactional
-    public void crearPaciente(Long dni, String nombre, String apellido, Integer edad, Date nacimiento){
+    public void crearPaciente(Long dni, String nombre, String apellido, Date nacimiento){
         Paciente paciente = new Paciente();
         paciente.setDni(dni);
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
-        paciente.setEdad(edad);
+       
         paciente.setNacimiento(nacimiento);
 
 
