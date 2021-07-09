@@ -1,6 +1,6 @@
 
 package com.proyecto.Egg.entity;
-
+import javax.persistence.Column;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class Medico implements Serializable {
     
     @Id
+    @Column(unique=true)
     private Long matricula;
     private String nombre;
     private String apellido;
