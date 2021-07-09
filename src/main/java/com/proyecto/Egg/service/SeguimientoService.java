@@ -35,6 +35,12 @@ public class SeguimientoService {
 
         sr.save(seguimiento);
     }
+    
+    @Transactional
+    public void modificarSeguimiento(String id, String comentario,Date fecha){
+        sr.modificar(id,comentario, fecha);
+           
+    }
 
     @Transactional(readOnly = true)
     public List<Seguimiento> listarSeguimientos (){
