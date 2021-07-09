@@ -29,6 +29,12 @@ public class PacienteService {
 
         pr.save(paciente);
     }
+    
+    @Transactional
+    public void modificarPaciente(Long dni, String nombre, String apellido, Date nacimiento){
+        pr.modificar(dni,nombre,apellido,nacimiento);
+    }
+    
 
     @Transactional(readOnly = true)
     public List<Paciente> listadoPacientes (){
