@@ -62,14 +62,14 @@ public class MedicoController {
     }
     
     @PostMapping("/guardar")
-    public RedirectView guardar(@Param("matricula") Long matricula, @Param("nombre") String nombre, @Param("apellido") String apellido,@Param("usuario") String usuario){
+    public RedirectView guardar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam("usuario") String usuario){
         ms.crearMedico(matricula,nombre,apellido,usuario);
 
     return new RedirectView("/medico");
     }
     
-    @PostMapping("/editar/{id}")
-    public RedirectView guardar(@PathVariable("matricula") Long matricula, @Param("nombre") String nombre, @Param("apellido") String apellido,@Param("usuario") String usuario){
+    @PostMapping("/editar")
+    public RedirectView guardar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam("usuario") String usuario){
         ms.modificarMedico(matricula,nombre,apellido,usuario);
 
     return new RedirectView("/medico");
