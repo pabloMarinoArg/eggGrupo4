@@ -2,6 +2,7 @@
 package com.proyecto.Egg.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ import javax.persistence.TemporalType;
 public class Paciente implements Serializable {
     
     @Id
+    @Column(unique=true)
     private Long dni;
     private String nombre;
     private String apellido;
