@@ -48,9 +48,29 @@ public class MedicoController {
         return mav;
 
     }
+    
+    @GetMapping("/modificar/{matricula}")
+     public ModelAndView modificarMedico(@PathVariable Long matricula){
+
+        ModelAndView mav = new ModelAndView("crearMedico");
+        mav.addObject("medico",ms.buscarMedicoPorId(matricula));
+        mav.addObject("listaUsuario",us.listarUsuarios());
+        mav.addObject("titulo","Modificar Medico");
+        mav.addObject("action","editar");
+        return mav;
+
+    }
+    
     @PostMapping("/guardar")
     public RedirectView guardar(@Param("matricula") Long matricula, @Param("nombre") String nombre, @Param("apellido") String apellido,@Param("usuario") String usuario){
         ms.crearMedico(matricula,nombre,apellido,usuario);
+
+    return new RedirectView("/medico");
+    }
+    
+    @PostMapping("/editar/{id}")
+    public RedirectView guardar(@PathVariable("matricula") Long matricula, @Param("nombre") String nombre, @Param("apellido") String apellido,@Param("usuario") String usuario){
+        ms.modificarMedico(matricula,nombre,apellido,usuario);
 
     return new RedirectView("/medico");
     }
