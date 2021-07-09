@@ -15,7 +15,7 @@ public class Paciente implements Serializable {
     private Long dni;
     private String nombre;
     private String apellido;
-    private Integer edad;
+    
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
     
