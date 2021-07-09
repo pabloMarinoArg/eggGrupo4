@@ -43,10 +43,28 @@ public class RolesController {
         return mav;
 
     }
+    
+    @GetMapping("/modificar/{id}")
+    public ModelAndView modificarRol(){
+
+        ModelAndView mav = new ModelAndView("crearRol");
+        mav.addObject("titulo","Modificar Rol");
+        mav.addObject("rol",rs.buscarRolPorId(id));
+        mav.addObject("action","editar");
+        return mav;
+
+    }
 
     @PostMapping("/guardar")
-    public RedirectView guardar(@Param("nombre") String nombre){
+    public RedirectView guardar(@RequestParam("nombre") String nombre){
         rs.crearRol(nombre);
+
+        return new RedirectView("/rol");
+    }
+    
+     @PostMapping("/editar")
+    public RedirectView guardar(@RequestParam("id") String id,@RequestParam("nombre") String nombre){
+        rs.modificarRol(id,nombre);
 
         return new RedirectView("/rol");
     }
