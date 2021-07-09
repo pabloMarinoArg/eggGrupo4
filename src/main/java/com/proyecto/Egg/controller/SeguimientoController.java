@@ -39,11 +39,11 @@ public class SeguimientoController {
 
     }
    @GetMapping("/modificar/{id}")
-    public ModelAndView crearSeguimiento (){
+    public ModelAndView modificarSeguimiento(@PathVariable String id){
         ModelAndView mav = new ModelAndView("crearSeguimiento");
         mav.addObject("seguimiento",ss.buscarSeguimientoPorId(id));
         mav.addObject("titulo","Crear Seguimiento");
-        mav.addObject("action","guardar");
+        mav.addObject("action","editar");
         return mav;
 
     }
