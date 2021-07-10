@@ -34,7 +34,7 @@ public class MedicoService {
     }
     
     @Transactional
-    public void modificarMedico(Long matricula, String nombre, String apellido, String usuario){
+    public void modificarMedico(Long matricula, String nombre, String apellido){
     
         mr.modificar(matricula,nombre,apellido);
     }

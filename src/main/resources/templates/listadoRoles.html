@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="lista_roles.css">
+    <link rel="stylesheet" th:href="@{/css/lista_roles.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Lista roles</title>
   </head>
   <body>
     <header>
-      <img class=logo src="img/logo.png" alt="logo">
+      <img class=logo th:src="@{/img/logo.png}" alt="logo">
     <h2 class="title">LISTA DE ROLES </h2>
   <section class="header-button">
-      <a href="lista_pacientes.html" class="button"><span class="fab fa-readme"></span>Lista</a>
-  <a href="crear_roles.html" class="button"><span class="fas fa-edit"></span>crear roles</a>
-    <a href="index.html" class="button"><span class="fas fa-home"></span>Inicio</a>
+      <a th:href="@{/rol}" class="button"><span class="fab fa-readme"></span>Lista</a>
+  <a th:href="@{/rol/crear}" class="button"><span class="fas fa-edit"></span>crear roles</a>
+    <a th:href="@{/}" class="button"><span class="fas fa-home"></span>Inicio</a>
   </section>
 
 </header>
@@ -33,8 +33,8 @@
                     <td th:text="${nombre}"></td>
 
       <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
-                 <a class="btn green" th:href="@{/roles/modificar/__${id}__}">Editar</a>
-                  <form th:action="@{/roles/eliminar/__${id}__}" method="post">
+                 <a class="btn green" th:href="@{/rol/modificar/__${id}__}">Editar</a>
+                  <form th:action="@{/rol/eliminar/__${id}__}" method="post">
                     <a class="btn red"  type="submit">Eliminar</a>
                  </form>
              </td>
@@ -43,7 +43,7 @@
        </tbody>
      </table>
 
-     <a class="btn tm" th:href="@{/roles/crear}"type="button">AGREGAR </a>
+     <a class="btn tm" th:href="@{/roles/crear}" type="button">AGREGAR </a>
 
 
 
