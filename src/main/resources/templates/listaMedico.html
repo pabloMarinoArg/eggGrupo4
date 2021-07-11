@@ -24,7 +24,7 @@
         <td th:text="${m.apellido}"></td>
         <td th:text="${m.usuario?.mail}"></td>
                 <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
-            <a class="btn btn-secondary btn-sm" th:href="@{/medico/editar/__${m.matricula}__}">Editar</a>
+            <a class="btn btn-secondary btn-sm" th:href="@{/medico/modificar/__${m.matricula}__}">Editar</a>
             <form th:action="@{/medico/eliminar/__${m.matricula}__}" method="post">
                 <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
             </form>

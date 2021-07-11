@@ -1,6 +1,8 @@
 package com.proyecto.Egg.controller;
 
 import com.proyecto.Egg.entity.Seguimiento;
+import com.proyecto.Egg.service.MedicoService;
+import com.proyecto.Egg.service.PacienteService;
 import com.proyecto.Egg.service.SeguimientoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -19,6 +21,10 @@ public class SeguimientoController {
 
     @Autowired
     private SeguimientoService ss;
+    @Autowired
+    private MedicoService ms;
+    @Autowired
+    private PacienteService ps;
 
     @GetMapping
     public ModelAndView listarSeguimiento (){
@@ -33,6 +39,8 @@ public class SeguimientoController {
     public ModelAndView crearSeguimiento (){
         ModelAndView mav = new ModelAndView("crearSeguimiento");
         mav.addObject("seguimiento",new Seguimiento());
+        mav.addObject("listaMedico", ms.listadoMedicos());
+        mav.addObject("listaPaciente",ps.listadoPacientes());
         mav.addObject("titulo","Crear Seguimiento");
         mav.addObject("action","guardar");
         return mav;
@@ -58,14 +66,14 @@ public class SeguimientoController {
 	private Medico medico;
     * */
     @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha,@RequestParam("medicoId") Long matricula){
+    public RedirectView guardar(@RequestParam("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha,@RequestParam("medico") Long medico,@RequestParam("paciente") Long paciente){
 
-        ss.crearSeguimiento(comentario, fecha, matricula);
+        ss.crearSeguimiento(comentario, fecha, medico, paciente);
 
         return new RedirectView("/seguimiento");
     }
     @PostMapping("/editar")
-    public RedirectView guardar(@RequestParam("id")String id,@RequestParam("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha,@RequestParam("medicoId") Long matricula){
+    public RedirectView guardar(@RequestParam("id")String id,@RequestParam("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha){
 
         ss.modificarSeguimiento(id,comentario, fecha);
 

@@ -28,13 +28,13 @@
       <th scope="col">ACCIONES</th>
       <tbody>
 
-                  <tr th:each="c : ${roles}">
-                    <td th:text="${id}"></td>
-                    <td th:text="${nombre}"></td>
+                  <tr th:each="c : ${listaRoles}">
+                    <td th:text="${c.id}"></td>
+                    <td th:text="${c.nombre}"></td>
 
       <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
-                 <a class="btn green" th:href="@{/rol/modificar/__${id}__}">Editar</a>
-                  <form th:action="@{/rol/eliminar/__${id}__}" method="post">
+                 <a class="btn green" th:href="@{/rol/modificar/__${c.id}__}">Editar</a>
+                  <form th:action="@{/rol/eliminar/__${c.id}__}" method="post">
                     <a class="btn red"  type="submit">Eliminar</a>
                  </form>
              </td>
