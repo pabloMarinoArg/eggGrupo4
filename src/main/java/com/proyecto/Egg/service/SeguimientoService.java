@@ -19,20 +19,20 @@ public class SeguimientoService {
     private SeguimientoRepository sr;
 
     @Autowired
-    private UsuarioService us;
-
-    @Autowired
     private MedicoService ms;
 
+    @Autowired
+    private PacienteService ps;
+
     @Transactional
-    public void crearSeguimiento(String comentario, Date fecha, Long matricula){
+    public void crearSeguimiento(String comentario, Date fecha, Long medico,Long paciente){
         Seguimiento seguimiento = new Seguimiento();
 
         seguimiento.setComentario(comentario);
         seguimiento.setFecha(fecha);
       
-        seguimiento.setMedico(ms.buscarMedicoPorId(matricula));
-
+        seguimiento.setMedico(ms.buscarMedicoPorId(medico));
+        seguimiento.setPaciente(ps.buscarPacientePorId(paciente));
         sr.save(seguimiento);
     }
     

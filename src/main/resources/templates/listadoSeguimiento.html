@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" th:href="@{/css/lista_pacientes.css}">
@@ -27,7 +27,7 @@
       <th>ID</th>
       <th>COMENTARIO</th>
       <th>FECHA</th>
-      
+      <th>Paciente</th>
       <th class="fecha">MEDICO</th>
       <th scope="col">ACCIONES</th>
       <tbody>
@@ -35,7 +35,7 @@
                     <td th:text="${s.id}"></td>
                     <td th:text="${s.comentario}"></td>
                     <td th:text="${s.fecha}"></td>
-                    
+                    <td th:text="${s.paciente?.nombre}"></td>
                     <td th:text="${s.medico.nombre}"></td>
 
       <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
@@ -49,7 +49,7 @@
        </tbody>
      </table>
 
-     <button class="btn btn-primary" th:text="${titulo}" th:href="@{/seguimiento/crear}"type="button"> </button>
+    <a th:href="@{/seguimiento/crear}"><button type="button" class="btn btn-outline-success" >Agregar seguimiento</button></a>
 
 
 

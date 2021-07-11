@@ -21,24 +21,34 @@
 
 
       <section class="form-register">
-        <form th:action="@{/seguimiento/__${action}__}">
+        <form th:action="@{/seguimiento/__${action}__}" th:object="${seguimiento}" method="POST">
       
       <input type="hidden" id="id" th:field="*{id}"><!--Se coloca "hidden" porque el id se asigna automáticamente, no tenemos que ingresarlo -->
       <h3>Ingrese comentario</h3>
-      <input th:field="*{comentario}"class="controls" type="text" id="comentario" placeholder="Ingrese el comentario" required>
+      <input th:field="*{comentario}" class="controls" type="text" id="comentario" placeholder="Ingrese el comentario" required>
       <h3>Ingrese fecha</h3>
       <input class="controls" type="date" th:field="*{fecha}" id="fecha" placeholder="Ingrese la fecha" required>
       <h3>ingrese usuario </h3>
      <!-- <input class="controls" type="text" name="usuario" id="usuario" placeholder=" usuario" required> No va, es redundante con medico-->
-      
-       <!--   <div class="form-floating mb-3 col-xl-6">
-            <select id="medicoId" class="form-select" aria-label="Elegir rol" th:field="*{medicoId}">
-                <option value="">Elija un medico</option>
-                <option th:each="m : ${listaMedico}" th:text="${m.nombre}" th:value="${m.matricula}"></option>
+
+            <div class="form-floating mb-3 col-xl-6">
+                <select id="medico" class="form-select" aria-label="Elegir medico" th:field="*{medico}">
+                    <option value="">Elija un usuario</option>
+                    <option th:each="u : ${listaMedico}" th:text="${u.nombre}" th:value="${u.matricula}"></option>
 
 
-            </select>
-            <label for="rol">Médico</label> CAPTURAR LA SESIÓN Y TOMAR EL ID DEL MEDICO DE AHI, NO INGRESARLO COMO AHORA-->
+                </select>
+                <label for="medico">Medico</label>
+            </div>
+            <div class="form-floating mb-3 col-xl-6">
+                <select id="paciente" class="form-select" aria-label="Elegir paciente" th:field="*{paciente}">
+                    <option value="">Elija un paciente</option>
+                    <option th:each="p : ${listaPaciente}" th:text="${p.nombre}" th:value="${p.dni}"></option>
+
+
+                </select>
+                <label for="medico">Medico</label>
+            </div>
           
 
                   <button class="btn btn-success" type="submit"

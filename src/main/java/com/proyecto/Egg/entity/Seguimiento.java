@@ -27,6 +27,8 @@ public class Seguimiento implements Serializable {
 	private Usuario usuario;*/
 	@ManyToOne
 	private Medico medico;
+	@OneToOne
+	private Paciente paciente;
 	
 	
 	
@@ -63,6 +65,14 @@ public class Seguimiento implements Serializable {
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

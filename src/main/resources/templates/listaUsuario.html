@@ -22,7 +22,7 @@
         <td th:text="${u.username}"></td>
         <td th:text="${u.rol}"></td>
         <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
-            <a class="btn btn-secondary btn-sm" th:href="@{/usuario/editar/__${u.id}__}">Editar</a>
+            <a class="btn btn-secondary btn-sm" th:href="@{/usuario/modificar/__${u.id}__}">Editar</a>
             <form th:action="@{/usuario/eliminar/__${u.id}__}" method="post">
                 <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
             </form>

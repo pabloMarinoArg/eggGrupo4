@@ -15,7 +15,7 @@
             <label for="matricula">Matrícula</label>
             <div class="invalid-feedback">La matrícula es obligatoria</div>
         </div>  
-      <input />
+
         <div class="form-floating mb-3 col-xl-6">
             <input id="nombre" class="form-control" type="text" placeholder="Ingrese nombre" th:field="*{nombre}" required/>
             <label for="nombre">Nombre</label>
@@ -31,11 +31,12 @@
         <div class="form-floating mb-3 col-xl-6">
             <select id="usuario" class="form-select" aria-label="Elegir usuario" th:field="*{usuario}">
                 <option value="">Elija un usuario</option>
-                <option th:each="u : ${listaUsuario}" th:text="${u.mail}" th:value="${u.id}"></option>
+                <option th:each="u : ${listaUsuario}" th:text="|${u.mail} - ${u.rol}|" th:value="${u.id}"></option>
 
 
             </select>
             <label for="usuario">Usuario</label>
+            </div>
         <br>
         <div class="row">
             <div class="col-xl-3">
@@ -43,11 +44,10 @@
                         th:text="${action == 'guardar'} ? 'Guardar Medico' : 'Guardar cambios'"></button>
             </div>
         </div>
-        </div>
+
     </form>
 
 
-</div>
 
 
 
