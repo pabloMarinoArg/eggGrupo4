@@ -20,7 +20,7 @@
 <div class="form">
   <section class="form-register">
 
-  <form th:action="@{/rol/crear}" method="POST" th:object="*{rol}">
+  <form th:action="@{/rol/__${action}__}" method="POST" th:object="${rol}">
   <input type="hidden" th:field="*{id}">
   <h3>Ingrese nombre del rol</h3>
   <input  class="controls" type="text" th:field="*{nombre}" id="nombre" placeholder="nombre" required>
