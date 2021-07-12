@@ -1,8 +1,10 @@
 package com.proyecto.Egg.controller;
 
 import com.proyecto.Egg.entity.Medico;
+import com.proyecto.Egg.entity.Usuario;
 import com.proyecto.Egg.repository.MedicoRepository;
 import com.proyecto.Egg.service.MedicoService;
+import com.proyecto.Egg.service.RolesService;
 import com.proyecto.Egg.service.UsuarioService;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class MedicoController {
     private MedicoService ms;
     @Autowired
     private UsuarioService us;
+    @Autowired
+    private RolesService rs;
 
 
     @GetMapping
@@ -39,7 +43,9 @@ public class MedicoController {
 
         ModelAndView mav = new ModelAndView("crearMedico");
         mav.addObject("medico",new Medico());
-        mav.addObject("listaUsuario",us.listarUsuarios());
+        mav.addObject("usuario",new Usuario());
+        mav.addObject("listaRol", rs.listadoRoles() );
+       // mav.addObject("listaUsuario",us.listarUsuarios());
         mav.addObject("titulo","Crear Medico");
         mav.addObject("action","guardar");
         return mav;
@@ -59,8 +65,8 @@ public class MedicoController {
     }
     
     @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, @RequestParam("usuario") String usuario){
-        ms.crearMedico(matricula,nombre,apellido,usuario);
+    public RedirectView guardar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, @RequestParam("username") String username,@RequestParam("password") String password, @RequestParam("mail") String mail,@RequestParam("rol") String rol){
+        ms.crearMedico(matricula,nombre,apellido,username,password,mail,rol);
 
     return new RedirectView("/medico");
     }

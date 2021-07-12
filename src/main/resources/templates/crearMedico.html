@@ -28,16 +28,36 @@
         </div>
       
        
+
+        <br>
+        <h2>Crear usuario para médico</h2>
+        <hr>
         <div class="form-floating mb-3 col-xl-6">
-            <select id="usuario" class="form-select" aria-label="Elegir usuario" th:field="*{usuario}">
-                <option value="">Elija un usuario</option>
-                <option th:each="u : ${listaUsuario}" th:text="|${u.mail} - ${u.rol}|" th:value="${u.id}"></option>
+            <input th:object="${usuario}" id="username" class="form-control" type="text" placeholder="Ingrese nombre de usuario" th:field="*{username}" required/>
+            <label for="username">Nombre de usuario</label>
+            <div class="invalid-feedback">El usuario es obligatorio</div>
+        </div>
+        <div class="form-floating mb-3 col-xl-6">
+            <input th:object="${usuario}" id="password" class="form-control" type="password" placeholder="Ingrese password" th:field="*{password}" required/>
+            <label for="password">Password</label>
+            <div class="invalid-feedback">El password es obligatorio</div>
+        </div>
+        <div class="form-floating mb-3 col-xl-6">
+            <input th:object="${usuario}" id="mail" class="form-control" type="email" placeholder="Ingrese correo" th:field="*{mail}" required/>
+            <label for="mail">E-Mail</label>
+
+        </div>
+        <div class="form-floating mb-3 col-xl-6">
+            <select th:object="${usuario}" id="rol" class="form-select" aria-label="Elegir rol" th:field="*{rol}">
+                <option value="">Elija un rol</option>
+                <option th:each="rol : ${listaRol}" th:text="${rol.nombre}" th:value="${rol.id}"></option>
 
 
             </select>
-            <label for="usuario">Usuario</label>
-            </div>
-        <br>
+            <label for="rol">Rol</label>
+        </div>
+            <br>
+
         <div class="row">
             <div class="col-xl-3">
                 <button class="btn btn-success" type="submit"
@@ -51,9 +71,10 @@
 
 
 
-<!-- <img th:src="@{/img/logo.png}"> -->
 
 
+
+    <footer th:replace="fragments :: footer" ></footer>
 </div>
 <div th:replace="fragments :: bootstrapS"></div>
 

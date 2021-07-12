@@ -15,7 +15,7 @@ public class Medico implements Serializable {
     private String apellido;
     @OneToMany
     private List<Seguimiento> seguimientos;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
 
     public Medico() {

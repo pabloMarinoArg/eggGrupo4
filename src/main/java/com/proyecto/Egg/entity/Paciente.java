@@ -4,6 +4,7 @@ package com.proyecto.Egg.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+
 import java.util.List;
 
 @Entity
@@ -14,7 +15,6 @@ public class Paciente implements Serializable {
     private Long dni;
     private String nombre;
     private String apellido;
-    private Long edad;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL )
@@ -58,13 +58,6 @@ public class Paciente implements Serializable {
         this.nacimiento = nacimiento;
     }
 
-    public Long getEdad() {
-        return edad;
-    }
-
-    public void setEdad(Long edad) {
-        this.edad = edad;
-    }
 
     public List<Seguimiento> getListaSeguimiento() {
         return listaSeguimiento;
