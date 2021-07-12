@@ -27,7 +27,7 @@ public class Seguimiento implements Serializable {
 	private Usuario usuario;*/
 	@ManyToOne
 	private Medico medico;
-	@OneToOne
+	@ManyToOne
 	private Paciente paciente;
 	
 	

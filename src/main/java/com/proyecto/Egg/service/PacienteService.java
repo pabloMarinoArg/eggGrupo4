@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -23,13 +26,23 @@ public class PacienteService {
         paciente.setDni(dni);
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
-       
+        //paciente.setEdad(edad);
         paciente.setNacimiento(nacimiento);
 
 
         pr.save(paciente);
     }
-    
+
+   // public Long calcularEdad(Date nacimiento){
+        /*Se transforma el Date a localdate*/
+     //   LocalDate nac =  nacimiento.toInstant()
+    //                    .atZone(ZoneId.systemDefault())
+     //                   .toLocalDate();
+     //   Long edad = ChronoUnit.YEARS.between(nac,LocalDate.now());
+
+    //    return edad;
+  //  }
+
     @Transactional
     public void modificarPaciente(Long dni, String nombre, String apellido, Date nacimiento){
         pr.modificar(dni,nombre,apellido,nacimiento);

@@ -1,58 +1,49 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-      <link rel="stylesheet" th:href="@{/css/lista_pacientes.css}">
-    <title>Lista pacientes</title>
-  </head>
+<head th:replace="fragments :: head"></head>
   <body>
-    <header>
-      <img class=logo th:src="@{/img/logo.png}" alt="logo">
-    <h2 class="title"> LISTA DE PACIENTES </h2>
-  <section class="header-button">
-      <a th:href="@{/paciente}" class="button"><span class="fab fa-readme"></span>Lista</a>
-  <a th:href="@{/paciente/crear}" class="button"><span class="fas fa-edit"></span>Agregar</a>
-    <a th:href="@{/}" class="button"><span class="fas fa-home"></span>Inicio</a>
-  </section>
+  <div class="container">
+      <nav th:replace="fragments :: nav"></nav>
+      <h1 th:text="${titulo}"></h1>
+      <hr>
+      <table class="table">
+          <thead>
+          <tr>
+              <th scope="col">DNI</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Fecha de nacimiento</th>
+              <th scope="col">Seguimientos</th>
+              <th scope="col">Opciones</th>
 
-</header>
-
-
-<div class="table-container">
-  <table class="table-cebra">
-    <thead>
-      <tr>
-      <th>DNI</th>
-      <th>NOMBRE</th>
-      <th>APELLIDO</th>
-
-      <th class="fecha">FECHA DE NACIMIENTO</th>
-      <th scope="col">ACCIONES</th>
-      <tbody>
-                  <tr th:each="c : ${listaPacientes}">
-                    <td th:text="${c.dni}"></td>
-                    <td th:text="${c.nombre}"></td>
-                    <td th:text="${c.apellido}"></td>
-
-                    <td th:text="${c.nacimiento}"></td>
-                        
-      <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
-                 <a class="btn green" th:href="@{/paciente/modificar/__${c.dni}__}">Editar</a>
-                  <form th:action="@{/paciente/eliminar/__${c.dni}__}" method="POST">
-                    <button class="btn red"  type="submit">Eliminar</button>
-                 </form>
-             </td>
-         </tr>
-
-       </tbody>
-     </table>
-
-     <a class="btn tm" th:href="@{/paciente/crear}" type="button">AGREGAR PACIENTE</a>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="p : ${listaPacientes}">
+              <td th:text="${p.dni}"></td>
+              <td th:text="${p.nombre}"></td>
+              <td th:text="${p.apellido}"></td>
+              <td th:text="${p.nacimiento}"></td>
+              <td >
+                  <a th:href="@{/seguimiento/listarSeguimiento/__${p.dni}__}">Ver seguimientos</a>
+              </td>
+              <td>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                      <button class="btn"><a th:href="@{/paciente/modificar/__${p.dni}__}"><i class="fas fa-edit"></i></a></button>
 
 
+                      <form th:action="@{/paciente/eliminar/__${p.dni}__}" method="post">
+                          <button class="btn"  type="submit"><i class="far fa-trash-alt"></i></button>
+                      </form>
+                  </div>
+              </td>
+          </tr>
 
-</div>
+          </tbody>
+      </table>
+
+      <a th:href="@{/paciente/crear}"><button type="button" class="btn btn-outline-success" >Ingresar Paciente</button></a>
+  </div>
+  <div th:replace="fragments :: bootstrapS"></div>
   </body>
 </html>

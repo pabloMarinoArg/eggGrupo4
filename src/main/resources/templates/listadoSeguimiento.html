@@ -1,58 +1,48 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" th:href="@{/css/lista_pacientes.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Lista pacientes</title>
-  </head>
+<head th:replace="fragments :: head"></head>
   <body>
-    <header>
-      <img class=logo th:src="@{/img/logo.png}" alt="logo">
-    <h2 class="title">SEGUIMIENTO DE PACIENTES </h2>
-  <!--Poner navbar de fragments, quitar botones header --> 
-      <section class="header-button">
-      <a href="lista_pacientes.html" class="button"><span class="fab fa-readme"></span>Lista</a>
-  <a href="crear_seguimiento.html" class="button"><span class="fas fa-edit"></span>ficha</a>
-    <a href="index.html" class="button"><span class="fas fa-home"></span>Inicio</a>
-  </section>
-
-</header>
-
-
-<div class="table-container">
-  <table class="table-cebra">
-    <thead>
+  <div class="container">
+    <nav th:replace="fragments :: nav"></nav>
+    <h1 th:text="${titulo}"></h1>
+    <hr>
+    <table class="table">
+      <thead>
       <tr>
-      <th>ID</th>
-      <th>COMENTARIO</th>
-      <th>FECHA</th>
-      <th>Paciente</th>
-      <th class="fecha">MEDICO</th>
-      <th scope="col">ACCIONES</th>
+        <th scope="col">#ID</th>
+        <th scope="col">Comentario</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Medico</th>
+        <th scope="col">Paciente</th>
+        <th scope="col">Opciones</th>
+
+      </tr>
+      </thead>
       <tbody>
-                  <tr th:each="s : ${listaSeguimientos}">
-                    <td th:text="${s.id}"></td>
-                    <td th:text="${s.comentario}"></td>
-                    <td th:text="${s.fecha}"></td>
-                    <td th:text="${s.paciente?.nombre}"></td>
-                    <td th:text="${s.medico.nombre}"></td>
+      <tr th:each="s : ${listaSeguimientos}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.comentario}"></td>
+        <td th:text="${s.fecha}"></td>
+        <td th:text="${s.medico.nombre}"></td>
+        <td th:text="${s.paciente.nombre}"></td>
+        <td>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn"><a th:href="@{/seguimiento/modificar/__${s.id}__}"><i class="fas fa-edit"></i></a></button>
 
-      <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
-                 <a class="btn green" th:href="@{/seguimiento/modificar/__${s.id}__}">Editar</a>
-                  <form th:action="@{/seguimiento/eliminar/__${s.id}__}" method="post">
-                    <button class="btn btn-warning"  type="submit">Eliminar</button>
-                 </form>
-             </td>
-         </tr>
 
-       </tbody>
-     </table>
+          <form th:action="@{/seguimiento/eliminar/__${s.id}__}" method="post">
+            <button class="btn"  type="submit"><i class="far fa-trash-alt"></i></button>
+          </form>
+          </div>
+        </td>
+      </tr>
 
+      </tbody>
+    </table>
+    <br>
     <a th:href="@{/seguimiento/crear}"><button type="button" class="btn btn-outline-success" >Agregar seguimiento</button></a>
+  </div>
 
-
-
-</div>
+  <div th:replace="fragments :: bootstrapS"></div>
   </body>
 </html>

@@ -24,11 +24,15 @@
         <td th:text="${t.fecha}"></td>
         <td th:text="${t.hora}"></td>
         <td th:text="${t.paciente.nombre}"></td>
-        <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
-            <a class="btn btn-secondary btn-sm" th:href="@{/turno/modificar/__${t.id}__}">Editar</a>
-            <form th:action="@{/turno/eliminar/__${t.id}__}" method="post">
-                <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-            </form>
+        <td>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn"><a th:href="@{/turno/modificar/__${t.id}__}"><i class="fas fa-edit"></i></a></button>
+
+
+                <form th:action="@{/turno/eliminar/__${t.id}__}" method="post">
+                    <button class="btn"  type="submit"><i class="far fa-trash-alt"></i></button>
+                </form>
+            </div>
         </td>
     </tr>
 

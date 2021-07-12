@@ -46,6 +46,17 @@ public class SeguimientoController {
         return mav;
 
     }
+
+    @GetMapping("/listarSeguimiento/{paciente}")
+    public ModelAndView listarSeguimientoPaciente(@PathVariable Long paciente){
+        ModelAndView mav = new ModelAndView("listadoSeguimiento");
+        mav.addObject("listaSeguimientos",ss.buscarSeguimientoPorPaciente(paciente));
+        mav.addObject("titulo","Seguimiento ");
+        //mav.addObject("action","");
+        return mav;
+
+    }
+
    @GetMapping("/modificar/{id}")
     public ModelAndView modificarSeguimiento(@PathVariable String id){
         ModelAndView mav = new ModelAndView("crearSeguimiento");
@@ -56,15 +67,7 @@ public class SeguimientoController {
 
     }
 	
-    /*private String id;
-	private String comentario;
-	@Temporal(TemporalType.DATE)
-	private Date fecha;
-	@OneToOne
-	private Usuario usuario;
-	@ManyToOne
-	private Medico medico;
-    * */
+
     @PostMapping("/guardar")
     public RedirectView guardar(@RequestParam("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha,@RequestParam("medico") Long medico,@RequestParam("paciente") Long paciente){
 

@@ -1,26 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" th:href="@{/css/crear_paciente.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Formulario de paciente</title>
-  </head>
+<head th:replace="fragments :: head"></head>
   <body>
+    <div class="container">
     <header>
-      <img class=logo th:src="@{img/logo.png}" alt="logo">
-    <h2 class="title"> REGISTRO PACIENTES </h2>
-  <section class="header-button">
-      <a th:href="@{/paciente}" class="button"><span class="fab fa-readme"></span>Lista</a>
-  <a th:href="@{/paciente/crear}" class="button"><span class="fas fa-edit"></span>Agregar</a>
-    <a th:href="@{/}" class="button"><span class="fas fa-home"></span>Inicio</a>
-  </section>
+        <nav th:replace="fragments :: nav"></nav>
+    </header>
+        <h1 th:text="${titulo}"></h1>
+        <hr>
+        <form id="formulario" class="needs-validation" th:action="@{/paciente/__${action}__}" method="POST"
+              th:object="${paciente}" autocomplete="off" novalidate>
+            <div class="form-floating mb-3 col-xl-6">
+                <input id="dni" class="form-control" type="number" th:field="*{dni}" required/>
+                <label for="dni">D.N.I</label>
+                <div class="invalid-feedback">Debe ingresar un dni</div>
+            </div>
 
-</header>
-<div class="form">
+            <div class="form-floating mb-3 col-xl-6">
+                <input id="nombre" class="form-control" type="text" placeholder="Ingrese nombre" th:field="*{nombre}" required/>
+                <label for="nombre">Nombre</label>
+                <div class="invalid-feedback">Debe ingresar el nombre</div>
+            </div>
+            <div class="form-floating mb-3 col-xl-6">
+                <input id="apellido" class="form-control" type="text" placeholder="Ingrese apellido" th:field="*{apellido}" required/>
+                <label for="apellido">Apellido</label>
+                <div class="invalid-feedback">El apellido es obligatorio</div>
+            </div>
+            <div class="form-floating mb-3 col-xl-6">
+                <input id="nacimiento" class="form-control" type="date" placeholder="Ingrese Fec. Nac." th:field="*{nacimiento}" required/>
+                <label for="nacimiento">Fecha Nacimiento</label>
+                <div class="invalid-feedback">Debe ingresar la fecha de nacimiento</div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-xl-3">
+                    <button class="btn btn-success" type="submit"
+                            th:text="${action == 'guardar'} ? 'Guardar Paciente' : 'Guardar cambios'"></button>
+                </div>
+            </div>
+
+        </form>
 
       
-      <section class="form-register">
+     <!-- <section class="form-register">
        <form th:action="@{/paciente/__${action}__}" method="POST" th:object="${paciente}">
       <h3>Ingrese el dni del paciente</h3>
       <input th:field="*{dni}" class="controls" type="number" id="dni" placeholder="Ingrese el dni del paciente" required/>
@@ -37,6 +60,8 @@
         </form>
     </section>
         
+    </div>-->
+
     </div>
   </body>
 </html>

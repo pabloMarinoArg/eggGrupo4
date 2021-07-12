@@ -62,6 +62,7 @@ public class PacienteController {
 
     @PostMapping("/guardar")
     public RedirectView guardar(@RequestParam("dni") Long dni, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento){
+        //Long edad = ps.calcularEdad(nacimiento);
 
         ps.crearPaciente(dni, nombre, apellido,nacimiento);
 

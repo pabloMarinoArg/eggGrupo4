@@ -12,6 +12,7 @@
         <th scope="col">#ID</th>
         <th scope="col">Usuario</th>
         <th scope="col">Rol</th>
+        <th scope="col">Mail</th>
         <th scope="col">Opciones</th>
 
     </tr>
@@ -21,11 +22,16 @@
         <td th:text="${u.id}"></td>
         <td th:text="${u.username}"></td>
         <td th:text="${u.rol}"></td>
-        <td class="col-md-4 px-md-2 d-flex justify-content-around w-100">
-            <a class="btn btn-secondary btn-sm" th:href="@{/usuario/modificar/__${u.id}__}">Editar</a>
-            <form th:action="@{/usuario/eliminar/__${u.id}__}" method="post">
-                <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-            </form>
+        <td th:text="${u.mail}"></td>
+        <td>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn"><a th:href="@{/usuario/modificar/__${u.id}__}"><i class="fas fa-edit"></i></a></button>
+
+
+                <form th:action="@{/usuario/eliminar/__${u.id}__}" method="post">
+                    <button class="btn"  type="submit"><i class="far fa-trash-alt"></i></button>
+                </form>
+            </div>
         </td>
     </tr>
 
@@ -36,6 +42,6 @@
 </div>
 
 
-<!--<div th:replace="fragments :: bootstrapS"></div>-->
+<div th:replace="fragments :: bootstrapS"></div>
 </body>
 </html>

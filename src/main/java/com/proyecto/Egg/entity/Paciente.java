@@ -2,12 +2,9 @@
 package com.proyecto.Egg.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import java.util.List;
 
 @Entity
 public class Paciente implements Serializable {
@@ -17,10 +14,11 @@ public class Paciente implements Serializable {
     private Long dni;
     private String nombre;
     private String apellido;
-    
+    private Long edad;
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
-    
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL )
+    private List<Seguimiento> listaSeguimiento;
     
     public Paciente() {
     }
@@ -59,8 +57,20 @@ public class Paciente implements Serializable {
     public void setNacimiento(Date nacimiento) {
         this.nacimiento = nacimiento;
     }
-    
-    
-    
-    
+
+    public Long getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Long edad) {
+        this.edad = edad;
+    }
+
+    public List<Seguimiento> getListaSeguimiento() {
+        return listaSeguimiento;
+    }
+
+    public void setListaSeguimiento(List<Seguimiento> listaSeguimiento) {
+        this.listaSeguimiento = listaSeguimiento;
+    }
 }

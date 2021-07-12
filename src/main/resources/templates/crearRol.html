@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" th:href="@{/css/crear_roles.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Formulario de roles</title>
-  </head>
+<head th:replace="fragments :: head"></head>
   <body>
-    <header>
-      <img class=logo th:src="@{/img/logo.png}" alt="logo">
-    <h2 class="title" th:text="${titulo}">  </h2>
-  <section class="header-button">
-      <a th:href="@{/rol}" class="button"><span class="fab fa-readme"></span>Lista</a>
-  <a th:href="@{/rol/crear}" class="button"><span class="fas fa-edit"></span>Roles</a>
-    <a th:href="@{/}" class="button"><span class="fas fa-home"></span>Inicio</a>
-  </section>
+  <div class="container" >
+    <nav th:replace="fragments :: nav"></nav>
 
-</header>
-<div class="form">
-  <section class="form-register">
 
-  <form th:action="@{/rol/__${action}__}" method="POST" th:object="${rol}">
-  <input type="hidden" th:field="*{id}">
-  <h3>Ingrese nombre del rol</h3>
-  <input  class="controls" type="text" th:field="*{nombre}" id="nombre" placeholder="nombre" required>
+    <h1 th:text="${titulo}"></h1>
+    <hr>
+    <form id="formulario" class="needs-validation" th:action="@{/rol/__${action}__}" method="POST"
+          th:object="${rol}" autocomplete="off" novalidate>
+      <input type="hidden" th:field="*{id}">
+      <div class="form-floating mb-3 col-xl-6">
+        <input id="nombre" class="form-control" type="text" th:field="*{nombre}" required/>
+        <label for="nombre">Rol</label>
+        <div class="invalid-feedback">Debe ingresar el nombre del rol</div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xl-3">
+          <button class="btn btn-success" type="submit"
+                  th:text="${action == 'guardar'} ? 'Guardar Rol' : 'Guardar cambios'"></button>
+        </div>
+      </div>
 
-           
-            <button type="submit" th:text="${action=='guardar'}? 'Crear rol':'Modificar Rol'" ></button> 
-  </form>         
-</section>
-</div>
+    </form>
+
+  </div>
+
+    <div th:replace="fragments :: bootstrapS"></div>
 </body>
 </html>

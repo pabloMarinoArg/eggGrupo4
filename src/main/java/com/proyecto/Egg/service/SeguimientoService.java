@@ -48,7 +48,15 @@ public class SeguimientoService {
         return sr.findAll();
 
     }
+    @Transactional(readOnly = true)
+    public List<Seguimiento> buscarSeguimientoPorPaciente(Long paciente){
 
+        List<Seguimiento> seguimientoLista = sr.findSeguimientoByPaciente(ps.buscarPacientePorId(paciente));
+
+        return seguimientoLista;
+
+
+    }
     @Transactional
     public Seguimiento buscarSeguimientoPorId(String id){
 
