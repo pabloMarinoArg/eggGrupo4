@@ -15,7 +15,7 @@
                   <span class="input-group-text">Comentarios</span>
                  <textarea  class="form-control" aria-label="comentarios" id="comentario" th:field="*{comentario}"></textarea>
                   <div class="invalid-feedback">Debe ingresar un comentario</div>
-                  <div class="valid-feedback">OK</div>
+
               </div>
               <!--<input id="comentario" class="form-control" type="text" placeholder="Comentarios" th:field="*{comentario}" required/>
               <label for="comentario">Comentario</label>
@@ -35,7 +35,7 @@
 
               </select>
               <div class="invalid-feedback">Debe ingresar un paciente</div>
-              <div class="valid-feedback">OK</div>
+
               <label for="paciente">Paciente</label>
           </div>
 
@@ -47,7 +47,7 @@
 
               </select>
               <div class="invalid-feedback">Debe ingresar un medico</div>
-              <div class="valid-feedback">OK</div>
+
               <label for="medico">Medico</label>
           </div>
 
@@ -62,7 +62,7 @@
 
 
   </div>
-
+  <script th:replace="fragments :: validate"></script>
   <div th:replace="fragments :: bootstrapS"></div>
 
   </body>

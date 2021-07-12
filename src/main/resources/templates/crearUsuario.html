@@ -24,7 +24,7 @@
         <div class="form-floating mb-3 col-xl-6">
             <input id="mail" class="form-control" type="email" placeholder="Ingrese correo" th:field="*{mail}" required/>
             <label for="mail">E-Mail</label>
-
+            <div class="invalid-feedback">Debe ingresar un correo</div>
         </div>
         <div class="form-floating mb-3 col-xl-6">
             <select id="rol" class="form-select" aria-label="Elegir rol" th:field="*{rol}">
@@ -34,6 +34,7 @@
 
             </select>
             <label for="rol">Rol</label>
+            <div class="invalid-feedback">Debe asignar un rol</div>
         <br>
         <div class="row">
             <div class="col-xl-3">
@@ -52,7 +53,7 @@
 <!-- <img th:src="@{/img/logo.png}"> -->
 
 
-
+<script th:replace="fragments :: validate"></script>
 <div th:replace="fragments :: bootstrapS"></div>
 </body>
 </html>

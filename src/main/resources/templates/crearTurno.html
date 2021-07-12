@@ -26,6 +26,7 @@
 
 
             </select>
+            <div class="invalid-feedback">Debe elegir un paciente</div>
             <label for="paciente">Paciente</label>
         </div>
 
@@ -53,7 +54,7 @@
 <!-- <img th:src="@{/img/logo.png}"> -->
 
 
-
+<script th:replace="fragments :: validate"></script>
 <div th:replace="fragments :: bootstrapS"></div>
 </body>
 </html>
