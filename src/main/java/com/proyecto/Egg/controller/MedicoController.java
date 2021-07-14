@@ -44,7 +44,7 @@ public class MedicoController {
         ModelAndView mav = new ModelAndView("crearMedico");
         mav.addObject("medico",new Medico());
         mav.addObject("usuario",new Usuario());
-        mav.addObject("listaRol", rs.listadoRoles() );
+        //mav.addObject("listaRol", rs.listadoRoles() );
        // mav.addObject("listaUsuario",us.listarUsuarios());
         mav.addObject("titulo","Crear Medico");
         mav.addObject("action","guardar");
@@ -65,8 +65,8 @@ public class MedicoController {
     }
     
     @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, @RequestParam("username") String username,@RequestParam("password") String password, @RequestParam("mail") String mail,@RequestParam("rol") String rol){
-        ms.crearMedico(matricula,nombre,apellido,username,password,mail,rol);
+    public RedirectView guardar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, @RequestParam("username") String username,@RequestParam("password") String password, @RequestParam("mail") String mail){
+        ms.crearMedico(matricula,nombre,apellido,username,password,mail);
 
     return new RedirectView("/medico");
     }

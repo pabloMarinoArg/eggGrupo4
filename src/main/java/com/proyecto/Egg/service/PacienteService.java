@@ -2,6 +2,7 @@
 package com.proyecto.Egg.service;
 
 import com.proyecto.Egg.entity.Paciente;
+import com.proyecto.Egg.errorservicio.ErrorServicio;
 import com.proyecto.Egg.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,10 +20,28 @@ import java.util.Optional;
 public class PacienteService {
     @Autowired
     private PacienteRepository pr;
-    /*Saco el atributo edad ya que no es necesario persistirlo, se puede calcular al momento de mostrar la info con la api java.time*/
+
+
+
+    public void validarPaciente(Long dni, String nombre, String apellido, Date nacimiento) throws ErrorServicio{
+
+        if(dni < 1000000){
+            throw new ErrorServicio("El dni no puede ser menor a 1 millón");
+        }
+        if(!nombre.matches("[a-zA-Z]") && !apellido.matches("[a-zA-Z]")){
+            throw new ErrorServicio("Los datos de nombre/apellido deben tener solo letras");
+        }
+        if(calcularEdad(nacimiento)<18){
+            throw new ErrorServicio("No se permite el internado de menores a un hogar de adultos");
+        }
+
+    }
+
+
     @Transactional
-    public void crearPaciente(Long dni, String nombre, String apellido, Date nacimiento){
+    public void crearPaciente(Long dni, String nombre, String apellido, Date nacimiento) throws ErrorServicio {
         Paciente paciente = new Paciente();
+        validarPaciente(dni, nombre, apellido, nacimiento);
         paciente.setDni(dni);
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
@@ -33,15 +52,15 @@ public class PacienteService {
         pr.save(paciente);
     }
 
-   // public Long calcularEdad(Date nacimiento){
+    public Long calcularEdad(Date nacimiento){
         /*Se transforma el Date a localdate*/
-     //   LocalDate nac =  nacimiento.toInstant()
-    //                    .atZone(ZoneId.systemDefault())
-     //                   .toLocalDate();
-     //   Long edad = ChronoUnit.YEARS.between(nac,LocalDate.now());
+        LocalDate nac =  nacimiento.toInstant()
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate();
+        Long edad = ChronoUnit.YEARS.between(nac,LocalDate.now());
 
-    //    return edad;
-  //  }
+        return edad;
+    }
 
     @Transactional
     public void modificarPaciente(Long dni, String nombre, String apellido, Date nacimiento){

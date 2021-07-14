@@ -23,7 +23,7 @@
         <td th:text="${s.id}"></td>
         <td th:text="${s.comentario}"></td>
         <td th:text="${s.fecha}"></td>
-        <td th:text="${s.medico.nombre}"></td>
+        <td th:text="${s.medico?.nombre}"></td>
         <td th:text="${s.paciente.nombre}"></td>
         <td>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">

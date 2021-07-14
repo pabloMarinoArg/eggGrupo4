@@ -1,6 +1,7 @@
 package com.proyecto.Egg.controller;
 
 import com.proyecto.Egg.entity.Paciente;
+import com.proyecto.Egg.errorservicio.ErrorServicio;
 import com.proyecto.Egg.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -51,17 +52,9 @@ public class PacienteController {
     
     }
 
-    /*
-    * private long dni;
-    private String nombre;
-    private String apellido;
-    private Integer edad;
-    @Temporal(TemporalType.DATE)
-    private Date nacimiento;
-    * */
 
     @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam("dni") Long dni, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento){
+    public RedirectView guardar(@RequestParam("dni") Long dni, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento) throws ErrorServicio {
         //Long edad = ps.calcularEdad(nacimiento);
 
         ps.crearPaciente(dni, nombre, apellido,nacimiento);

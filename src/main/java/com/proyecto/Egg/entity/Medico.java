@@ -1,5 +1,9 @@
 
 package com.proyecto.Egg.entity;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.Column;
 import java.io.Serializable;
 import java.util.List;
@@ -13,12 +17,21 @@ public class Medico implements Serializable {
     private Long matricula;
     private String nombre;
     private String apellido;
-    @OneToMany
+    @OneToMany(mappedBy = "medico")
     private List<Seguimiento> seguimientos;
     @OneToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
 
     public Medico() {
+    }
+
+    /*Esto hace que antes de remover el objeto medico, se haga null en sus componentes hijos
+    * De esta manera podemos borrar un elemento "padre" y dejar sus hijos*/
+    @PreRemove
+    public void nullSeguimiento (){
+        seguimientos
+                .forEach(seg-> seg.setMedico(null));
+
     }
 
     public Usuario getUsuario() {

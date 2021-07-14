@@ -26,7 +26,7 @@ public class MedicoService {
     private RolRepository rp;
 
     @Transactional
-    public void crearMedico(Long matricula, String nombre, String apellido, String username,String password, String mail,String rol){
+    public void crearMedico(Long matricula, String nombre, String apellido, String username,String password, String mail){
         Medico medico = new Medico();
         Usuario user  = new Usuario();
         medico.setMatricula(matricula);
@@ -35,7 +35,7 @@ public class MedicoService {
         user.setUsername(username);
         user.setPassword(password);
         user.setMail(mail);
-        user.setRol(rp.findById(rol).orElse(null));
+        user.setRol(rp.findByNombre("MEDICO"));
 
         medico.setUsuario(user);
         ur.save(user);
