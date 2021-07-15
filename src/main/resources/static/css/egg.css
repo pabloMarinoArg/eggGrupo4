@@ -35,28 +35,7 @@ header{
 
   
   }
-  /*.logo{
-  display:block;
-  width: 35%;
-  height: 100%;
-  }
- 
-  .logo img{
-  position:relative; 
-  right:70%; 
-  top: 0px;
-  width:50%;
-  height: 100%;
-  object-fit:contain;
-  font-size: 300%;
-  font-family: sans-serif;
-  text-align: center;
-  padding-top:10%;
-  padding-bottom: 10%;
-
-  }
-*/
-
+  
  .encabezado{
   display: flex;
   width: 100%;
@@ -219,13 +198,3 @@ footer{
  width: 35px;
  height: 35px;
 }
-
-
- 
-
-
-
-
- /*<!--<li><a href="#" class="enlace fas fa-question-circle"">Institucion</a></li>-->
-    <!--  <li><a href="#" class="enlace fas fa-address-book">contacto</a></li>
-      <li><a href="#" class="enlace fas fa-map-marked-alt">Ubicacion</a></li>*/
