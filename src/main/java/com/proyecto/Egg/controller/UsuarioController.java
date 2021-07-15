@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 @Controller
@@ -59,7 +60,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/guardar")
-    public RedirectView guardar(@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("mail") String mail,@RequestParam("rol") String rol){
+    public RedirectView guardar(@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("mail") String mail,@RequestParam("rol") String rol) throws MessagingException {
 
         us.crearUsuario(username, password, rol, mail);
 

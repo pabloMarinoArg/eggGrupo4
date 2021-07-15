@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import java.util.List;
@@ -34,10 +35,13 @@ public class UsuarioService implements UserDetailsService {
 
     @Autowired
     private BCryptPasswordEncoder encoder;
+
+    @Autowired
+    private EmailService emailService;
     
     @Transactional
-    public void crearUsuario(String usuario, String password, String rol, String mail){
-     
+    public void crearUsuario(String usuario, String password, String rol, String mail) throws MessagingException {
+        String pass= password;
         Usuario usuarioo = new Usuario();
         usuarioo.setUsername(usuario);
         usuarioo.setMail(mail);
@@ -47,7 +51,10 @@ public class UsuarioService implements UserDetailsService {
         }else {
         	usuarioo.setRol(rp.findByNombre("PARIENTE"));
         }
+        String cuerpo = "Muchas gracias por registrarte:\nUsuario:"+usuario+"\nPassword: "+pass+"\nPor cualquier inconveniente por favor comunicarse con administración.";
+        emailService.enviarCorreoAsincrono(mail,"Bienvenido a Casa Hogar ATARDECER",cuerpo);
         usuarioRepository.save(usuarioo);
+
         
     }
 
