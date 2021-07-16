@@ -2,8 +2,8 @@
    justify-content:center;
   align-items: center;
   align-content: center;
-  box-sizing: border-box;/*todol los anchos y algos incluyen el pading y margin*/
-  font-family: 'Courgette', cursive;/*para modificar la fuente con google font*/
+  box-sizing: border-box;
+  font-family: 'Courgette', cursive;
 }
 body{
   margin: 0;
@@ -12,8 +12,8 @@ body{
 }
 header{
   background-color:#CACFD2;
-  width: 100%;/*ancho del 100% de mi body*/
-  height: 30vh; /* tamaño de alto de mi header , con vh lo fijamo en tamaño segun la pantalla*/
+  width: 100%;
+  height: 30vh; 
   }
   .encabezado{
     background: #beb1af;
@@ -36,6 +36,7 @@ header{
   
   }
   
+
  .encabezado{
   display: flex;
   width: 100%;
@@ -46,7 +47,6 @@ header{
   width: 35%;
   height: 100%;
   }
-  /*como quiero que se vea la imagen de mi logo */
   .logo img{
   position:relative; /* Hacemos que la posición en pantalla sea fija para que siempre se muestre en pantalla*/
   right:110%; /* Establecemos la barra en la izquierda o derecha */
@@ -73,7 +73,7 @@ nav{
  position: static;
  width: auto;
  height: auto;
- transform: translateX(0%);/*no se traslade el menu*/
+ transform: translateX(0%);
  float:right;
 
 
@@ -126,10 +126,8 @@ font-family: obliqua;
     flex-wrap: nowrap;
     border-top:5px solid black;
     justify-content: center;
-    align-ite: center;
+    align-items: center;
   }
-
-
 .foto{
   
   width: 20%;
@@ -181,7 +179,6 @@ footer{
  -o-transition:all 500ms ease;
  transition:all 500ms ease; 
 }
-
 .social ul li .icon-facebook {background:#fff  ;} 
 .social ul li .icon-instagram {background: #fff;}
 .social ul li .icon-whatsapp {background-color:#fff;}
@@ -189,7 +186,6 @@ footer{
 
 .social ul li a:hover {
  background: #A6ACAF;
-
 }
 .social img{
  padding: 0%;
@@ -198,3 +194,16 @@ footer{
  width: 35px;
  height: 35px;
 }
+.imge{
+    margin:2%  1% ;
+  display:block;
+  align-content: center;
+  justify-content:center;
+}
+
+.imge .img1{
+  width:5.3%;
+ }
+.imge .img2{
+  width: 5.3%;
+ }
