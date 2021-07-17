@@ -54,6 +54,7 @@ public class UsuarioController {
     public ModelAndView modificar(@PathVariable String id){
         ModelAndView mav = new ModelAndView("crearUsuario");
         mav.addObject("usuario", us.buscarUsuarioPorId(id));
+        mav.addObject("listaRol",rs.listadoRoles());
         mav.addObject("titulo","Modificar Usuario");
         mav.addObject("action","editar");
         return mav;
@@ -70,7 +71,7 @@ public class UsuarioController {
      @PostMapping("/editar")
     public RedirectView guardar(@RequestParam("id") String id,@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("mail") String mail,@RequestParam("rol") String rol){
 
-        us.modificarUsuario(id,username, password, mail);
+        us.modificarUsuario(id,username, password, mail,rol);
 
         return new RedirectView("/usuario");
     }

@@ -66,8 +66,8 @@ public class UsuarioService implements UserDetailsService {
     }
 
     @Transactional
-    public void modificarUsuario(String id, String username, String password, String mail){
-        usuarioRepository.modificar(id,username,encoder.encode(password),mail);
+    public void modificarUsuario(String id, String username, String password, String mail,String rol){
+        usuarioRepository.modificar(id,username,encoder.encode(password),mail,rp.findById(rol).orElse(null));
 
     }
 

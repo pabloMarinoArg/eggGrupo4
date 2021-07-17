@@ -14,6 +14,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 
 @Service
@@ -21,14 +22,20 @@ public class PacienteService {
     @Autowired
     private PacienteRepository pr;
 
+    private static Pattern p = Pattern.compile("^[a-zA-Z]*$");
+
+    public static boolean isAlpha(String s) {
+        return p.matcher(s).find();
+    }
 
 
-    public void validarPaciente(Long dni, String nombre, String apellido, Date nacimiento) throws ErrorServicio{
+
+    public void  validarPaciente(Long dni, String nombre, String apellido, Date nacimiento) throws ErrorServicio{
 
         if(dni < 1000000){
             throw new ErrorServicio("El dni no puede ser menor a 1 millón");
         }
-        if(!nombre.matches("[a-zA-Z]") && !apellido.matches("[a-zA-Z]")){
+        if(!isAlpha(nombre) || !isAlpha(apellido)){
             throw new ErrorServicio("Los datos de nombre/apellido deben tener solo letras");
         }
         if(calcularEdad(nacimiento)<18){
