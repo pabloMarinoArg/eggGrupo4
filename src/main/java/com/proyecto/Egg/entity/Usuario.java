@@ -35,6 +35,7 @@ public class Usuario {
     @ManyToOne
     private Roles rol;
 
+
     public Usuario() {
     }
 

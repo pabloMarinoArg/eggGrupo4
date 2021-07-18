@@ -21,6 +21,12 @@ public class TurnoService {
     @Autowired
     private PacienteService ps;
 
+    public void validarTurno(Date fecha, Date hora, Long paciente){
+
+
+    }
+
+
     @Transactional
     public void crearTurno(Date fecha,Date hora, Long paciente){
         Turno turno = new Turno();
