@@ -39,17 +39,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/css/*", "/js/*", "/img/*")
+                .antMatchers("/css/*", "/js/*", "/img/*","/")
                 .permitAll()
                 .antMatchers("/**").permitAll()
                 .and().formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/logincheck")
-                .defaultSuccessUrl("/",true)
+                .defaultSuccessUrl("/inicio",true)
                 .permitAll()
                 .and().logout()
                 .deleteCookies("JSESSIONID")
-                .logoutUrl("/logout")
+                .logoutUrl("/salir")
+
                 .permitAll();
 
 

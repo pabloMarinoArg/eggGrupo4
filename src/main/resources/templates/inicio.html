@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+
+<div class="container">
+     <nav th:replace="fragments :: nav"></nav>
+    
+    <h1 class="fw-bold" style="text-align: center;">Inicio</h1>
+
+      
+      
+       <h1 th:if="${session.usuariosession != null}" th:text="|Hola ${session.usuariosession.username}!|"></h1>
+      
+    </div>
+    
+  
+  
+
+
+
+  <div th:replace="fragments :: bootstrapS"></div>
+</body>
+
+</html>

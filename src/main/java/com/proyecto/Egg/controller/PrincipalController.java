@@ -11,11 +11,19 @@ import org.springframework.web.servlet.ModelAndView;
 public class PrincipalController {
 
     @GetMapping
-    @PreAuthorize("isAuthenticated()")
-    public ModelAndView inicio(){
+    //@PreAuthorize("isAuthenticated()")
+    public ModelAndView index(){
         return new ModelAndView("index");
 
     }
+
+    @GetMapping("/inicio")
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView inicio(){
+        return new ModelAndView("inicio");
+
+    }
+
 
     @GetMapping("/salir")
     public ModelAndView salir() {

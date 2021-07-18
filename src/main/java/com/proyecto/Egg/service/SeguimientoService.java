@@ -24,13 +24,16 @@ public class SeguimientoService {
     @Autowired
     private PacienteService ps;
 
+    @Autowired
+    private UsuarioService us;
+
     @Transactional
     public void crearSeguimiento(String comentario, Date fecha, Long medico,Long paciente){
         Seguimiento seguimiento = new Seguimiento();
 
         seguimiento.setComentario(comentario);
         seguimiento.setFecha(fecha);
-      
+
         seguimiento.setMedico(ms.buscarMedicoPorId(medico));
         seguimiento.setPaciente(ps.buscarPacientePorId(paciente));
         sr.save(seguimiento);
