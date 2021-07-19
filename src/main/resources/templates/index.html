@@ -119,14 +119,17 @@
             </button>
         </div>
 
-    <footer th:replace="fragments :: footer">
+    <!--<footer th:replace="fragments :: footer">-->
+        <footer>
 	    <div class="imge">
             
         <center>
-        <a href="https://api.whatsapp.com/send?phone=+5492616667240" target="_blank" class="icon-whatsapp"><img class="img1" src="imagenes/what.png" alt="whatsapp"></a>
-     <a href="mailto:rociocenturion17@hotmail.com" class="icon-mail"><img class="img2" src="imagenes/mail.png" alt="gmail"></a> 
+        <a href="https://api.whatsapp.com/send?phone=+5492616667240" target="_blank" class="icon-whatsapp"><img class="img1" th:src="@{/img/what.png}" alt="whatsapp"></a>
+     <a href="mailto:rociocenturion17@hotmail.com" class="icon-mail"><img class="img2" th:src="@{/img/mail.png}" alt="gmail"></a>
+        </center>
     </div>
-</center>
+
+
 </footer>
     </div>
     <div th:replace="fragments :: bootstrapS"></div>

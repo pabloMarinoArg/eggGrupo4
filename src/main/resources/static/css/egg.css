@@ -1,148 +1,4 @@
-*{
-   justify-content:center;
-  align-items: center;
-  align-content: center;
-  box-sizing: border-box;
-  font-family: 'Courgette', cursive;
-}
-body{
-  margin: 0;
-  padding: 0;
-  background:#beb1af;
-}
-header{
-  background-color:#CACFD2;
-  width: 100%;
-  height: 30vh; 
-  }
-  .encabezado{
-    background: #beb1af;
-  display: flex;
-  width: 100%;
-  height: 100%;
 
-  }
-  .encabezado li{
-  position:relative; 
-  left:50%; 
-  top: -150px;
-
-  }
-  .encabezado img{
-   display: flex;
-  width: 80%;
-  height: 80%;
-
-  
-  }
-  
-
- .encabezado{
-  display: flex;
-  width: 100%;
-  height: 100%;
-  }
-  .logo{
-  display:block;
-  width: 35%;
-  height: 100%;
-  }
-  .logo img{
-  position:relative; /* Hacemos que la posición en pantalla sea fija para que siempre se muestre en pantalla*/
-  right:110%; /* Establecemos la barra en la izquierda o derecha */
-  top: 0px; /* Bajamos la barra cantidad de px de arriba a abajo */
-  width:80%;
-  height: 100%;
-  object-fit:contain;
-  }
-
-nav{
-   
-    background-color: green;
-    height: 100%;
-    width:100%
-    display: flex;
-    right: 30%;
-    justify-content: flex-end;
-   
-
-}
-.menu{
- 
-  align-items:flex-end;
- position: static;
- width: auto;
- height: auto;
- transform: translateX(0%);
- float:right;
-
-
-}
-
-main{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: lightgray;
-    border-top:10px solid black;
-}
-
-
-.Banner{
-    background-color: lightgray;
-    height: 130vh;
-    width: 100%;
-}
-.Banner p{
-  margin-top: 5% ;
-  margin-right:8%;
-  margin-left:8%; 
-  font-family: serif;
-  color: darkgray
-  font-size:40%;
-}
-
-.Banner h6{
-font-size:150%;
-font-family: obliqua;
-
-
-}
-
-.galeria h5{
-       margin: 0%  8% ;
-      text-decoration: center;
-      font-size: 150%;
-       font-family:book antiqua;
-     color: black;
-
-}
-.galeria{
-    margin: 0% 0%;
-    width: 100%;
-    background-color: lightgray;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    border-top:5px solid black;
-    justify-content: center;
-    align-items: center;
-  }
-.foto{
-  
-  width: 20%;
-  height: 200px;
-   margin: 1% 1%;
-   display: flex;
-}
-.foto img{
-   
-    width: 100%;
-    height: 150px;
-    margin: 1% 1%;
-    display:flex;
-    justify-content:space-around;
-    }
 footer{
     background-color: #beb1af;
     height: 150px;
@@ -156,11 +12,11 @@ footer{
 .social {
  text-align:left;
  height: 1400px;
- position: fixed; 
- right:0; 
- top: 260px; 
+ position: fixed;
+ right:0;
+ top: 260px;
  flex-wrap:wrap;
- z-index: 2000; 
+ z-index: 2000;
 }
 
 .social ul {
@@ -177,9 +33,9 @@ footer{
  text-decoration: none;
  -webkit-transition:all 500ms ease;
  -o-transition:all 500ms ease;
- transition:all 500ms ease; 
+ transition:all 500ms ease;
 }
-.social ul li .icon-facebook {background:#fff  ;} 
+.social ul li .icon-facebook {background:#fff  ;}
 .social ul li .icon-instagram {background: #fff;}
 .social ul li .icon-whatsapp {background-color:#fff;}
 .social ul li .icon-mail { background: #fff  ;}

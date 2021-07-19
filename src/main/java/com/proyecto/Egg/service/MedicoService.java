@@ -49,14 +49,12 @@ public class MedicoService {
     public void crearMedico(Long matricula, String nombre, String apellido, String username,String password, String mail) throws ErrorServicio, MessagingException {
         validarMedico(nombre, apellido);
         Medico medico = new Medico();
-        Usuario user  = new Usuario();
+
         medico.setMatricula(matricula);
         medico.setNombre(nombre);
         medico.setApellido(apellido);
         medico.setUsuario(us.crearUsuarioMetodo(username, password,"MEDICO",mail));
 
-        medico.setUsuario(user);
-        ur.save(user);
         mr.save(medico);
 
     }

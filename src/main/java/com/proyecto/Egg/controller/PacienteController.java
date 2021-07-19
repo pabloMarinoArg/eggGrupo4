@@ -43,11 +43,12 @@ public class PacienteController {
     
     @GetMapping("/modificar/{dni}")
     public ModelAndView modificarPaciente(@PathVariable Long dni){
-    
-        ModelAndView mav = new ModelAndView("crearPaciente");
-        mav.addObject("paciente",ps.buscarPacientePorId(dni));
-        mav.addObject("titulo","Modificar Paciente");
-        mav.addObject("action","editar");
+
+            ModelAndView mav = new ModelAndView("crearPaciente");
+            mav.addObject("paciente", ps.buscarPacientePorId(dni));
+            mav.addObject("titulo", "Modificar Paciente");
+            mav.addObject("action", "editar");
+
         return mav;
     
     }
