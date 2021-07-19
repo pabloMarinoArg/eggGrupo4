@@ -14,10 +14,10 @@
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Acerca de nosotros</a>
+                            <a class="nav-link" href="#datos2">Acerca de nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                            <a  class="nav-link" href="#datos">Contacto</a>
                         </li>
 
 
@@ -118,20 +118,34 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+        <div class="card mb-3 bg-dark">
 
+            <div id="datos2"   class="card-body">
+                <h5 class="card-title" style="text-align:center; font-size:30px;color:white;">Quienes somos</h5>
+                <p style="text-align: center; color:white;" class="card-text">Atardecer nace en el año 2012 como un emprendimiento familiar, desde entonces nos hemos esforzado por ofrecer un excelente servicio profesional dentro de un ambiente familiar y cálido para nuestros abuelos.<br>Nuestro objetivo es mantener o mejorar la calidad de vida  de nuestros adultos mayores para que puedan disfrutar plenamente de este momento de la vida.</p>
+
+            </div>
+        </div>
     <!--<footer th:replace="fragments :: footer">-->
-        <footer>
+        <footer class="bg-dark">
+            <center>
+            <section>
+            <h2 style="text-align:center; font-size:30px;color:white;">Contactanos</h2>
+            </section>
 	    <div class="imge">
             
-        <center>
+
         <a href="https://api.whatsapp.com/send?phone=+5492616667240" target="_blank" class="icon-whatsapp"><img class="img1" th:src="@{/img/what.png}" alt="whatsapp"></a>
-     <a href="mailto:rociocenturion17@hotmail.com" class="icon-mail"><img class="img2" th:src="@{/img/mail.png}" alt="gmail"></a>
-        </center>
+     <a id="datos" href="mailto:rociocenturion17@hotmail.com" class="icon-mail"><img class="img2" th:src="@{/img/mail.png}" alt="gmail"></a>
+
     </div>
 
+            </center>
+        </footer>
 
-</footer>
-    </div>
+
+
+        </div>
     <div th:replace="fragments :: bootstrapS"></div>
   </body>
   </html>

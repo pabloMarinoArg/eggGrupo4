@@ -52,9 +52,10 @@ footer{
 }
 .imge{
     margin:2%  1% ;
-  display:block;
-  align-content: center;
-  justify-content:center;
+    display:block;
+    align-content: center;
+    justify-content:center;
+    top: -100%;
 }
 
 .imge .img1{
