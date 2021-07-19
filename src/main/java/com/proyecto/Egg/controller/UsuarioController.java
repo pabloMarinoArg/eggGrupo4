@@ -7,6 +7,7 @@ import com.proyecto.Egg.service.RolesService;
 import com.proyecto.Egg.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,8 @@ public class UsuarioController {
     private UsuarioService us;
     @Autowired
     private RolesService rs;
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ModelAndView listarUsuarios(){
 
@@ -38,7 +41,7 @@ public class UsuarioController {
         mav.addObject("listaUsuarios",listaUsuarios);
         return mav;
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/crear")
     public ModelAndView crearUsuario(){
 
@@ -49,7 +52,7 @@ public class UsuarioController {
         mav.addObject("action","guardar");
         return mav;
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/modificar/{id}")
     public ModelAndView modificar(@PathVariable String id){
         ModelAndView mav = new ModelAndView("crearUsuario");
@@ -59,7 +62,7 @@ public class UsuarioController {
         mav.addObject("action","editar");
         return mav;
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/guardar")
     public RedirectView guardar(@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("mail") String mail,@RequestParam("rol") String rol) throws MessagingException {
 
@@ -67,7 +70,7 @@ public class UsuarioController {
 
         return new RedirectView("/usuario");
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
      @PostMapping("/editar")
     public RedirectView guardar(@RequestParam("id") String id,@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("mail") String mail,@RequestParam("rol") String rol){
 
@@ -75,7 +78,7 @@ public class UsuarioController {
 
         return new RedirectView("/usuario");
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/eliminar/{id}")
     public RedirectView eliminar(@PathVariable String id){
 

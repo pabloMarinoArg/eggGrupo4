@@ -7,6 +7,7 @@ import com.proyecto.Egg.service.SeguimientoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +26,7 @@ public class SeguimientoController {
     private MedicoService ms;
     @Autowired
     private PacienteService ps;
-
+    @PreAuthorize("hasAnyRole('ADMIN','MEDICO','PARIENTE')")
     @GetMapping
     public ModelAndView listarSeguimiento (){
         ModelAndView mav = new ModelAndView("listadoSeguimiento");
@@ -34,7 +35,7 @@ public class SeguimientoController {
         mav.addObject("titulo","Listado de seguimientos");
         return mav;
     }
-
+    @PreAuthorize("hasAnyRole('ADMIN','MEDICO')")
     @GetMapping("/crear")
     public ModelAndView crearSeguimiento (){
         ModelAndView mav = new ModelAndView("crearSeguimiento");
@@ -46,7 +47,7 @@ public class SeguimientoController {
         return mav;
 
     }
-
+    @PreAuthorize("hasAnyRole('ADMIN','MEDICO','PACIENTE')")
     @GetMapping("/listarSeguimiento/{paciente}")
     public ModelAndView listarSeguimientoPaciente(@PathVariable Long paciente){
         ModelAndView mav = new ModelAndView("listadoSeguimiento");
@@ -56,7 +57,7 @@ public class SeguimientoController {
         return mav;
 
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
    @GetMapping("/modificar/{id}")
     public ModelAndView modificarSeguimiento(@PathVariable String id){
         ModelAndView mav = new ModelAndView("crearSeguimiento");
@@ -66,8 +67,8 @@ public class SeguimientoController {
         return mav;
 
     }
-	
 
+    @PreAuthorize("hasAnyRole('ADMIN','MEDICO')")
     @PostMapping("/guardar")
     public RedirectView guardar(@RequestParam("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha,@RequestParam("medico") Long medico,@RequestParam("paciente") Long paciente){
 
@@ -75,6 +76,7 @@ public class SeguimientoController {
 
         return new RedirectView("/seguimiento");
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/editar")
     public RedirectView guardar(@RequestParam("id")String id,@RequestParam("comentario")String comentario, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date fecha){
 
@@ -82,9 +84,9 @@ public class SeguimientoController {
 
         return new RedirectView("/seguimiento");
     }
-	
-	
 
+
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping("/eliminar/{id}")
     public RedirectView eliminar (@PathVariable String id){
         ss.eliminar(id);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments :: head"></head>
   <body>
   <div class="container">
@@ -23,7 +23,7 @@
         <td th:text="${s.id}"></td>
         <td th:text="${s.comentario}"></td>
         <td th:text="${s.fecha}"></td>
-        <td th:text="${s.medico?.nombre}"></td>
+        <td th:text="|${s.medico?.nombre} {s.medico?.apellido}|"></td>
         <td th:text="|${s.paciente.nombre} ${s.paciente.apellido}|"></td>
         <td>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">

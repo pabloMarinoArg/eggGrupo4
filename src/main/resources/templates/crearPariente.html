@@ -25,7 +25,7 @@
             <div class="invalid-feedback">El apellido es obligatorio</div>
         </div>
         <div class="form-floating mb-3 col-xl-6">
-            <select id="paciente" class="form-select" aria-label="Seleccionar paciente" th:field="*{paciente}">
+            <select id="paciente" class="form-select" aria-label="Seleccionar paciente" th:field="*{paciente}" xmnls:sec="http://www.thymeleaf.org/extras/spring-security">
                 <option value="">Seleccione Paciente familiar</option>
                 <option th:each="p : ${listaPaciente}" th:text="|${p.nombre} ${p.apellido}|" th:value="${p.dni}"></option>
 

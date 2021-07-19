@@ -9,6 +9,7 @@ import com.proyecto.Egg.service.ParienteService;
 import com.proyecto.Egg.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,7 +30,7 @@ public class ParienteController {
     @Autowired
     private UsuarioService us;
 
-
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping
     public ModelAndView listarParientes(){
         ModelAndView mav = new ModelAndView("listadoPariente");
@@ -39,7 +40,7 @@ public class ParienteController {
         return mav;
 
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/crear")
     public ModelAndView crear(){
 
@@ -51,6 +52,7 @@ public class ParienteController {
         mav.addObject("action","guardar");
         return mav;
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/modificar/{id}")
     public ModelAndView modificar(@PathVariable String id){
 
@@ -62,7 +64,7 @@ public class ParienteController {
         mav.addObject("action","editar");
         return mav;
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/guardar")
     public RedirectView guardar(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam("mail") String mail,@RequestParam("password") String password,@RequestParam("username") String username,@RequestParam("paciente") Long paciente) throws MessagingException {
         //Long edad = ps.calcularEdad(nacimiento);
@@ -71,7 +73,7 @@ public class ParienteController {
 
         return new RedirectView("/pariente");
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/editar")
     public RedirectView editar(@RequestParam String id,@RequestParam String nombre, @RequestParam String apellido, @RequestParam Long paciente){
 
@@ -79,6 +81,7 @@ public class ParienteController {
 
         return new RedirectView("/pariente");
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/eliminar/{id}")
     public RedirectView eliminarPariente(@PathVariable String id){
 

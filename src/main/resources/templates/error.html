@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://thymeleaf.org">
+<html lang="es" xmlns:th="http://thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments :: head"></head>
     <body >
 
 
         <div class="container" >
+            <center>
             <p class="text-center fs-1" th:text="${codigo}"></p>
             <p class="text-center fs-2" th:text="${mensaje == null ? 'Intentá nuevamente' : mensaje}"></p>
             <p class="text-center fs-2" th:text="${mensaje2 == null ? '' : mensaje2}"></p>
             <p class="text-center fs-2" th:text="${mensaje3 == null ? '' : mensaje3}"></p>
-
+            </center>
         </div>
-
+        <center>
         <div class="container d-grid gap-2">
             <a href="javascript:history.back()">
                 <button style="display:block;" class="btn btn-dark rounded-pill">Volver</button>
             </a>
         </div>
-
-
+        </center>
+        <center>
         <img th:src="@{/img/logo.png}">
-
+        </center>
         <div th:replace="fragments :: bootstrapS"></div>
 
 

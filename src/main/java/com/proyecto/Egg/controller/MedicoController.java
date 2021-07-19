@@ -10,6 +10,7 @@ import com.proyecto.Egg.service.UsuarioService;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,7 +30,7 @@ public class MedicoController {
     @Autowired
     private RolesService rs;
 
-
+    @PreAuthorize("hasAnyRole('ADMIN','MEDICO')")
     @GetMapping
     public ModelAndView listaMedicos(){
 
@@ -40,6 +41,7 @@ public class MedicoController {
         return mav;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/crear")
     public ModelAndView crearMedico(){
 
@@ -51,7 +53,7 @@ public class MedicoController {
         return mav;
 
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/modificar/{matricula}")
      public ModelAndView modificarMedico(@PathVariable Long matricula){
 
@@ -63,21 +65,21 @@ public class MedicoController {
         return mav;
 
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/guardar")
     public RedirectView guardar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, @RequestParam("username") String username,@RequestParam("password") String password, @RequestParam("mail") String mail) throws ErrorServicio, MessagingException {
         ms.crearMedico(matricula,nombre,apellido,username,password,mail);
 
     return new RedirectView("/medico");
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/editar")
     public RedirectView editar(@RequestParam("matricula") Long matricula, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido){
         ms.modificarMedico(matricula,nombre,apellido);
 
     return new RedirectView("/medico");
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/eliminar/{matricula}")
     public RedirectView eliminar (@PathVariable Long matricula){
         ms.eliminar(matricula);

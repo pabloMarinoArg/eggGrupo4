@@ -30,12 +30,12 @@
             </a>
             <ul  class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" th:href="@{/paciente}">Pacientes</a></li>
-              <li><a class="dropdown-item" th:href="@{/medico}">Medicos</a></li>
-              <li><a class="dropdown-item" th:href="@{/rol}">Roles</a></li>
-              <li><a class="dropdown-item" th:href="@{/turno}">Turnos</a></li>
-              <li><a class="dropdown-item" th:href="@{/pariente}">Parientes</a></li>
-              <li><a class="dropdown-item" th:href="@{/seguimiento}">Seguimiento</a></li>
-              <li><a class="dropdown-item" th:href="@{/usuario}">Usuarios</a></li>
+              <li><a sec:authorize="hasAnyRole('ADMIN','MEDICO')" class="dropdown-item" th:href="@{/medico}">Medicos</a></li>
+              <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/rol}">Roles</a></li>
+              <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/turno}">Turnos</a></li>
+              <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/pariente}">Parientes</a></li>
+              <li><a sec:authorize="hasAnyRole('ADMIN','MEDICO')" class="dropdown-item" th:href="@{/seguimiento}">Seguimiento</a></li>
+              <li><a sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:href="@{/usuario}">Usuarios</a></li>
             </ul>
           </li>
 

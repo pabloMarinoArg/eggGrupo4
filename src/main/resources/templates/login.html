@@ -15,7 +15,7 @@
     <h1>Login</h1>
     <form class="needs-validation" th:action="@{/logincheck}" method="POST">
     <p th:if="${error!=null}" th:text="${error}" style="color: red;"></p>
-    <p th:of="${logout!=null}" th:text="${logout}" style="color:blue"></p>
+    <p th:if="${logout!=null}" th:text="${logout}" style="color:blue"></p>
   	<div class="mb-2">
     <label for="username" class="form-label">Usuario</label>
     <input type="text" name="username" class="form-control" id="username" aria-describedby="username">

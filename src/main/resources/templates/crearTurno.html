@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmnls:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments :: head"></head>
 <body>
 <nav th:replace="fragments :: nav"></nav>
 
 <div class="container" >
     <h1 th:text="${titulo}"></h1>
+
     <form id="formulario" class="needs-validation" th:action="@{/turno/__${action}__}" method="POST"
           th:object="${turno}" autocomplete="off" novalidate>
+        <p>Los turnos no se pueden dar de 22 a 07</p>
+        <p>Revisar bien la fecha, no elegir una anterior a la actual</p>
+
         <input type="hidden" th:field="*{id}"/>
         <div class="form-floating mb-3 col-xl-6">
             <input id="fecha" class="form-control" type="date" placeholder="Fecha de visita" th:field="*{fecha}" required/>

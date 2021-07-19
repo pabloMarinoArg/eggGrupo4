@@ -4,6 +4,7 @@ import com.proyecto.Egg.entity.Roles;
 import com.proyecto.Egg.service.RolesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +19,7 @@ public class RolesController {
     @Autowired
     private RolesService rs;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ModelAndView listarRoles(){
 
@@ -29,7 +31,7 @@ public class RolesController {
 
 
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/crear")
     public ModelAndView crear(){
 
@@ -40,7 +42,7 @@ public class RolesController {
         return mav;
 
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/modificar/{id}")
     public ModelAndView modificarRol(@PathVariable String id){
 
@@ -51,21 +53,21 @@ public class RolesController {
         return mav;
 
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/guardar")
     public RedirectView guardar(@RequestParam("nombre") String nombre){
         rs.crearRol(nombre);
 
         return new RedirectView("/rol");
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
      @PostMapping("/editar")
     public RedirectView editar(@RequestParam("id") String id,@RequestParam("nombre") String nombre){
         rs.modificarRol(id,nombre);
 
         return new RedirectView("/rol");
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/eliminar/{id}")
     public RedirectView eliminar (@PathVariable String id) {
         rs.eliminar(id);

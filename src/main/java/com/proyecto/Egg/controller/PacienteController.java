@@ -6,6 +6,7 @@ import com.proyecto.Egg.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +22,7 @@ public class PacienteController {
     @Autowired
     private PacienteService ps;
 
+
     @GetMapping
     public ModelAndView listadoPacientes(){
         ModelAndView mav = new ModelAndView("listadoPaciente");
@@ -30,7 +32,7 @@ public class PacienteController {
         return mav;
 
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/crear")
     public ModelAndView crearPaciente(){
         ModelAndView mav = new ModelAndView("crearPaciente");
@@ -40,7 +42,7 @@ public class PacienteController {
         return mav;
 
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/modificar/{dni}")
     public ModelAndView modificarPaciente(@PathVariable Long dni){
 
@@ -53,7 +55,7 @@ public class PacienteController {
     
     }
 
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/guardar")
     public RedirectView guardar(@RequestParam("dni") Long dni, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento) throws ErrorServicio {
         //Long edad = ps.calcularEdad(nacimiento);
@@ -62,13 +64,13 @@ public class PacienteController {
 
         return new RedirectView("/paciente");
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/editar")
     public RedirectView editar(@RequestParam("dni") Long dni, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nacimiento){
         ps.modificarPaciente(dni,nombre,apellido,nacimiento);
         return new RedirectView("/paciente");
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/eliminar/{dni}")
     public RedirectView eliminar(@PathVariable Long dni){
 
