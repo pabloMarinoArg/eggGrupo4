@@ -22,7 +22,7 @@
         <div class="form-floating mb-3 col-xl-6">
             <select id="paciente" class="form-select" aria-label="Elegir paciente" th:field="*{paciente}">
                 <option value="">Elija un paciente</option>
-                <option th:each="p : ${paciente}" th:text="${p.nombre}" th:value="${p.dni}"></option>
+                <option th:each="p : ${paciente}" th:text="|${p.nombre} ${p.apellido}|" th:value="${p.dni}"></option>
 
 
             </select>

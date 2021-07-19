@@ -3,16 +3,19 @@ package com.proyecto.Egg.controller;
 import com.proyecto.Egg.entity.Paciente;
 import com.proyecto.Egg.entity.Pariente;
 import com.proyecto.Egg.entity.Usuario;
+import com.proyecto.Egg.errorservicio.ErrorServicio;
 import com.proyecto.Egg.service.PacienteService;
 import com.proyecto.Egg.service.ParienteService;
 import com.proyecto.Egg.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.ArrayList;
+
+import javax.mail.MessagingException;
 import java.util.List;
 
 @Controller
@@ -38,46 +41,46 @@ public class ParienteController {
     }
 
     @GetMapping("/crear")
-    public ModelAndView crearPariente(){
-        List<Paciente> lista = new ArrayList<>();
+    public ModelAndView crear(){
+
         ModelAndView mav = new ModelAndView("crearPariente");
         mav.addObject("pariente", new Pariente());
         mav.addObject("titulo","Ingresar pariente");
         mav.addObject("listaPaciente", pas.listadoPacientes());
         mav.addObject("usuario",new Usuario());
-        mav.addObject("lista",lista);
         mav.addObject("action","guardar");
         return mav;
     }
-    @GetMapping("/editar/{id}")
-    public ModelAndView editarPariente(@PathVariable String id){
-        List<Paciente> lista = new ArrayList<>();
-        ModelAndView mav = new ModelAndView("crearPariente");
+    @GetMapping("/modificar/{id}")
+    public ModelAndView modificar(@PathVariable String id){
+
+        ModelAndView mav = new ModelAndView("modificarPariente");
         mav.addObject("pariente", ps.buscarParientePorId(id));
         mav.addObject("titulo","Ingresar pariente");
         mav.addObject("listaPaciente", pas.listadoPacientes());
-        mav.addObject("lista",lista);
-        mav.addObject("action","modificar");
+
+        mav.addObject("action","editar");
         return mav;
     }
 
     @PostMapping("/guardar")
-    public RedirectView guardarPariente(@RequestParam("usuario") String usuario, List<Paciente> listaPaciente){
+    public RedirectView guardar(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,@RequestParam("mail") String mail,@RequestParam("password") String password,@RequestParam("username") String username,@RequestParam("paciente") Long paciente) throws MessagingException {
+        //Long edad = ps.calcularEdad(nacimiento);
 
-        ps.crearPariente(usuario, listaPaciente);
+        ps.crearPariente(username,password,mail, nombre, apellido, paciente);
 
-       return new RedirectView("/pariente");
+        return new RedirectView("/pariente");
     }
 
-    @PostMapping("/modificar")
-    public RedirectView modificarPariente(@RequestParam String id, @RequestParam List<Paciente> listaPaciente){
+    @PostMapping("/editar")
+    public RedirectView editar(@RequestParam String id,@RequestParam String nombre, @RequestParam String apellido, @RequestParam Long paciente){
 
-        ps.modificarPariente(id,listaPaciente);
+        ps.modificarPariente(id,nombre,apellido,paciente);
 
         return new RedirectView("/pariente");
     }
     @PostMapping("/eliminar/{id}")
-    public RedirectView eliminarPariente(@RequestParam String id){
+    public RedirectView eliminarPariente(@PathVariable String id){
 
         ps.eliminarPariente(id);
 

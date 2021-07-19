@@ -58,6 +58,25 @@ public class UsuarioService implements UserDetailsService {
         
     }
 
+    @Transactional
+    public Usuario crearUsuarioMetodo(String usuario, String password, String rol, String mail) throws MessagingException {
+        String pass= password;
+        Usuario usuarioo = new Usuario();
+        usuarioo.setUsername(usuario);
+        usuarioo.setMail(mail);
+        usuarioo.setPassword(encoder.encode(password));
+        if(rol!=null) {
+            usuarioo.setRol(rp.findById(rol).orElse(null));
+        }else {
+            usuarioo.setRol(rp.findByNombre("PARIENTE"));
+        }
+        String cuerpo = "Muchas gracias por registrarte:\nUsuario:"+usuario+"\nPassword: "+pass+"\nPor cualquier inconveniente por favor comunicarse con administración.";
+        emailService.enviarCorreoAsincrono(mail,"Bienvenido a Casa Hogar ATARDECER",cuerpo);
+        usuarioRepository.save(usuarioo);
+        return usuarioo;
+
+    }
+
     @Transactional(readOnly=true)
     public List<Usuario> listarUsuarios(){
         return usuarioRepository.findAll();

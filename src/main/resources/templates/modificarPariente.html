@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<div class="container" >
+<nav th:replace="fragments :: nav"></nav>
+
+
+    <h1 th:text="${titulo}"></h1>
+    <hr>
+    <form id="formulario" class="needs-validation" th:action="@{/pariente/__${action}__}" method="POST"
+          th:object="${pariente}" autocomplete="off" novalidate>
+
+            <input id="id" class="form-control" type="hidden" th:field="*{id}" >
+
+
+        <div class="form-floating mb-3 col-xl-6">
+            <input id="nombre" class="form-control" type="text" placeholder="Ingrese nombre" th:field="*{nombre}" required/>
+            <label for="nombre">Nombre</label>
+            <div class="invalid-feedback">El nombre es obligatorio</div>
+        </div>
+           <div class="form-floating mb-3 col-xl-6">
+            <input id="apellido" class="form-control" type="text" placeholder="Ingrese apellido" th:field="*{apellido}" required/>
+            <label for="apellido">Apellido</label>
+            <div class="invalid-feedback">El apellido es obligatorio</div>
+        </div>
+        <div class="form-floating mb-3 col-xl-6">
+            <select id="paciente" class="form-select" aria-label="Seleccionar paciente" th:field="*{paciente}">
+                <option value="">Seleccione Paciente familiar</option>
+                <option th:each="p : ${listaPaciente}" th:text="|${p.nombre} ${p.apellido}|" th:value="${p.dni}"></option>
+
+
+            </select>
+            <label for="paciente">Paciente</label>
+            <div class="invalid-feedback">Debe asignar un Paciente</div>
+            <br>
+
+
+        <br>
+
+
+
+        <div class="row">
+            <div class="col-xl-3">
+                <button class="btn btn-success" type="submit"
+                        th:text="${action == 'guardar'} ? 'Guardar Pariente' : 'Guardar cambios'"></button>
+            </div>
+        </div>
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+    <footer th:replace="fragments :: footer" ></footer>
+
+</div>
+<script th:replace="fragments :: validate"></script>
+<div th:replace="fragments :: bootstrapS"></div>
+
+</body>
+</html>

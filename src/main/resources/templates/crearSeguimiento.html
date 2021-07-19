@@ -30,7 +30,7 @@
           <div class="form-floating mb-3 col-xl-6">
               <select id="paciente" class="form-select" aria-label="Elegir paciente" th:field="*{paciente}">
                   <option value="">Elija un paciente</option>
-                  <option th:each="p : ${listaPaciente}" th:text="${p.nombre}" th:value="${p.dni}"></option>
+                  <option th:each="p : ${listaPaciente}" th:text="|${p.nombre} ${p.apellido}|" th:value="${p.dni}"></option>
 
 
               </select>
@@ -41,8 +41,8 @@
 
           <div class="form-floating mb-3 col-xl-6">
               <select id="medico" class="form-select" aria-label="Elegir medico" th:field="*{medico}">
-                  <option value="">Elija un usuario</option>
-                  <option th:each="u : ${listaMedico}" th:text="${u.nombre}" th:value="${u.matricula}"></option>
+                  <option value="">Elija un medico</option>
+                  <option th:each="u : ${listaMedico}" th:text="|${u.nombre} ${u.apellido}|" th:value="${u.matricula}"></option>
 
 
               </select>

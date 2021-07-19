@@ -15,8 +15,8 @@ import java.util.List;
 public interface ParienteRepository extends JpaRepository<Pariente, String> {
 
     @Modifying
-    @Query("UPDATE Pariente p SET  p.listaPaciente =:listaPaciente WHERE p.id=:id ")
-    void modificar(@Param("id") String id, @Param("listaPaciente") List<Paciente> listaPaciente);
+    @Query("UPDATE Pariente p SET  p.nombre =:nombre, p.apellido=:apellido, p.paciente =:paciente WHERE p.id=:id ")
+    void modificar(@Param("id") String id,@Param("nombre") String nombre,@Param("apellido") String apellido, @Param("paciente") Paciente paciente);
 
 
 

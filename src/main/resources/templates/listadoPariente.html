@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: head"></head>
+<body>
+<div class="container">
+<nav th:replace="fragments :: nav"></nav>
+<h1 th:text="${titulo}"></h1>
+<hr>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Mail</th>
+        <th scope="col">Paciente</th>
+        <th scope="col">Opciones</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${listaPariente}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.nombre}"></td>
+        <td th:text="${p.apellido}"></td>
+        <td th:text="${p.usuario?.mail}"></td>
+        <td th:text="|${p.paciente?.nombre} ${p.paciente?.apellido}|"></td>
+        <td>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn"><a th:href="@{/pariente/modificar/__${p.id}__}"><i class="fas fa-edit"></i></a></button>
+
+
+                <form th:action="@{/pariente/eliminar/__${p.id}__}" method="post">
+                    <button class="btn"  type="submit"><i class="far fa-trash-alt"></i></button>
+                </form>
+            </div>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+<a th:href="@{/pariente/crear}"><button type="button" class="btn btn-outline-success" >Agregar Pariente</button></a>
+</div>
+
+
+<div th:replace="fragments :: bootstrapS"></div>
+</body>
+</html>

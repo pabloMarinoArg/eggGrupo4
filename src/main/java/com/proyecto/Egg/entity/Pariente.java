@@ -13,9 +13,11 @@ public class Pariente {
     @GeneratedValue(generator="uuid")
     @GenericGenerator(name="uuid",strategy = "uuid2")
     private String id;
-    @OneToMany
-    private List<Paciente> listaPaciente;
+    private String nombre;
+    private String apellido;
     @OneToOne
+    private Paciente paciente;
+    @OneToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
 
     public Pariente() {
@@ -30,12 +32,28 @@ public class Pariente {
         this.id = id;
     }
 
-    public List<Paciente> getListaPaciente() {
-        return listaPaciente;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setListaPaciente(List<Paciente> listaPaciente) {
-        this.listaPaciente = listaPaciente;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     public Usuario getUsuario() {

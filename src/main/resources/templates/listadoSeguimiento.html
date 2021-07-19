@@ -24,7 +24,7 @@
         <td th:text="${s.comentario}"></td>
         <td th:text="${s.fecha}"></td>
         <td th:text="${s.medico?.nombre}"></td>
-        <td th:text="${s.paciente.nombre}"></td>
+        <td th:text="|${s.paciente.nombre} ${s.paciente.apellido}|"></td>
         <td>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
           <button class="btn"><a th:href="@{/seguimiento/modificar/__${s.id}__}"><i class="fas fa-edit"></i></a></button>

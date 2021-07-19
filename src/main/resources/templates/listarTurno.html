@@ -23,7 +23,7 @@
         <td th:text="${t.id}"></td>
         <td th:text="${t.fecha}"></td>
         <td th:text="${t.hora}"></td>
-        <td th:text="${t.paciente.nombre}"></td>
+        <td th:text="|${t.paciente.nombre} ${t.paciente.apellido}|"></td>
         <td>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn"><a th:href="@{/turno/modificar/__${t.id}__}"><i class="fas fa-edit"></i></a></button>
